@@ -7,98 +7,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #0a0c0f;
-  --ink2: #13181f;
-  --ink3: #1c2330;
-  --rule: #232c3a;
-  --rule2: #2e3a4a;
-  --steel: #3d4f63;
-  --mist: #6b7f96;
-  --fog: #98aab8;
-  --paper: #c8d4de;
-  --white: #eef2f6;
-  --amber: #f0a000;
-  --amber2: rgba(240,160,0,0.12);
-  --red: #e84040;
-  --red2: rgba(232,64,64,0.12);
-  --green: #2ec27e;
-  --green2: rgba(46,194,126,0.10);
-  --blue: #4aa3f5;
-  --blue2: rgba(74,163,245,0.10);
-  --purple: #a78bfa;
-  --r: 6px;
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'IBM Plex Sans', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --ink:#0a0c0f; --ink2:#13181f; --ink3:#1c2330; --rule:#232c3a; --rule2:#2e3a4a;
+  --steel:#3d4f63; --mist:#6b7f96; --fog:#98aab8; --paper:#c8d4de; --white:#eef2f6;
+  --amber:#f0a000; --amber2:rgba(240,160,0,0.12);
+  --red:#e84040; --red2:rgba(232,64,64,0.12);
+  --green:#2ec27e; --green2:rgba(46,194,126,0.10);
+  --blue:#4aa3f5; --blue2:rgba(74,163,245,0.10);
+  --purple:#a78bfa; --r:6px;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'IBM Plex Sans',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-height:100vh;overflow-x:hidden}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--rule2);border-radius:3px}
-
-/* ── LAYOUT ── */
 #app{display:flex;height:100vh;overflow:hidden}
 .sidebar{width:220px;min-width:220px;background:var(--ink2);border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow-y:auto}
-.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-
-/* ── SIDEBAR ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
 .logo{padding:18px 16px 14px;border-bottom:1px solid var(--rule)}
 .logo-mark{font-family:var(--font-display);font-size:28px;letter-spacing:2px;color:var(--amber);line-height:1}
 .logo-sub{font-size:9px;color:var(--mist);letter-spacing:2px;text-transform:uppercase;margin-top:2px;font-family:var(--font-mono)}
 .nav-section{padding:14px 12px 4px;font-size:9px;color:var(--steel);letter-spacing:2px;text-transform:uppercase;font-family:var(--font-mono)}
 .nav-item{display:flex;align-items:center;gap:9px;padding:8px 14px;margin:1px 6px;border-radius:var(--r);cursor:pointer;font-size:13px;color:var(--fog);transition:all .15s;font-weight:400;position:relative}
 .nav-item:hover{background:var(--ink3);color:var(--white)}
-.nav-item.active{background:var(--amber2);color:var(--amber);border-left:2px solid var(--amber)}
-.nav-item.active{padding-left:12px}
+.nav-item.active{background:var(--amber2);color:var(--amber);border-left:2px solid var(--amber);padding-left:12px}
 .nav-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0}
 .nav-badge{margin-left:auto;font-family:var(--font-mono);font-size:10px;background:var(--ink3);color:var(--mist);padding:1px 6px;border-radius:3px}
-.nav-badge.hot{background:var(--red2);color:var(--red)}
 .sidebar-bottom{margin-top:auto;padding:12px;border-top:1px solid var(--rule)}
 .capacity-label{font-size:9px;color:var(--mist);letter-spacing:1px;text-transform:uppercase;font-family:var(--font-mono);margin-bottom:6px}
 .cap-bar-wrap{height:4px;background:var(--rule2);border-radius:2px;overflow:hidden;margin-bottom:4px}
 .cap-bar{height:100%;background:var(--amber);border-radius:2px;transition:width .5s}
 .cap-bar.over{background:var(--red)}
 .cap-meta{font-size:10px;color:var(--fog);font-family:var(--font-mono)}
-
-/* ── TOPBAR ── */
 .topbar{height:50px;background:var(--ink2);border-bottom:1px solid var(--rule);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0}
 .topbar-title{font-family:var(--font-display);font-size:22px;letter-spacing:1.5px;color:var(--white);flex:1}
 .search-box{background:var(--ink3);border:1px solid var(--rule2);border-radius:var(--r);padding:6px 12px;font-size:12px;color:var(--white);width:200px;outline:none;font-family:var(--font-body);transition:border-color .15s}
 .search-box::placeholder{color:var(--steel)}
 .search-box:focus{border-color:var(--amber)}
 .btn{padding:6px 14px;border-radius:var(--r);border:none;cursor:pointer;font-size:12px;font-weight:600;font-family:var(--font-body);transition:all .15s;letter-spacing:.3px}
-.btn-amber{background:var(--amber);color:var(--ink)}
-.btn-amber:hover{background:#e09500}
-.btn-ghost{background:var(--ink3);color:var(--fog);border:1px solid var(--rule2)}
-.btn-ghost:hover{color:var(--white);border-color:var(--rule)}
+.btn-amber{background:var(--amber);color:var(--ink)}.btn-amber:hover{background:#e09500}
+.btn-ghost{background:var(--ink3);color:var(--fog);border:1px solid var(--rule2)}.btn-ghost:hover{color:var(--white);border-color:var(--rule)}
 .btn-sm{padding:4px 10px;font-size:11px}
 .btn-danger{background:var(--red2);color:var(--red);border:1px solid var(--red)}
 .btn-success{background:var(--green2);color:var(--green);border:1px solid var(--green)}
-
-/* ── CONTENT ── */
 .content{flex:1;overflow-y:auto;padding:20px}
-
-/* ── CARDS / STATS ── */
 .stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
 .stat{background:var(--ink2);border:1px solid var(--rule);border-radius:var(--r);padding:14px 12px;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--line-color,var(--amber))}
 .stat-val{font-family:var(--font-display);font-size:30px;letter-spacing:1px;line-height:1;margin-bottom:2px}
 .stat-lbl{font-size:10px;color:var(--mist);letter-spacing:1px;text-transform:uppercase;font-family:var(--font-mono)}
-.stat-sub{font-size:10px;color:var(--fog);margin-top:4px}
-
-/* ── TABLES ── */
 .panel{background:var(--ink2);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
 .panel-header{padding:12px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
 .panel-title{font-family:var(--font-display);font-size:16px;letter-spacing:1px;flex:1}
 .tbl{width:100%;border-collapse:collapse;font-size:12px}
 .tbl th{text-align:left;padding:8px 12px;font-size:9px;font-weight:600;color:var(--steel);letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--rule);font-family:var(--font-mono);background:var(--ink3);white-space:nowrap}
-.tbl td{padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:middle;color:var(--paper)}
+.tbl td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:middle;color:var(--paper)}
 .tbl tr:last-child td{border-bottom:none}
 .tbl tr:hover td{background:var(--ink3)}
 .tbl tr.clickable{cursor:pointer}
-
-/* ── BADGES ── */
 .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:600;font-family:var(--font-mono);letter-spacing:.3px;white-space:nowrap}
 .badge-on-track{background:var(--green2);color:var(--green)}
 .badge-delayed{background:var(--red2);color:var(--red)}
@@ -113,57 +81,22 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 .badge-n1{background:rgba(74,163,245,.12);color:var(--blue)}
 .badge-n2{background:rgba(240,160,0,.12);color:var(--amber)}
 .badge-n3{background:rgba(167,139,250,.12);color:var(--purple)}
-
-/* ── PROGRESS ── */
 .prog-wrap{height:4px;background:var(--rule2);border-radius:2px;overflow:hidden;min-width:60px}
-.prog-fill{height:100%;border-radius:2px;transition:width .5s}
-
-/* ── MEMBER AVATAR ── */
+.prog-fill{height:100%;border-radius:2px;transition:width .4s}
 .av{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-weight:600;flex-shrink:0;font-family:var(--font-mono)}
 .av-sm{width:24px;height:24px;font-size:9px}
 .av-md{width:32px;height:32px;font-size:11px}
 .av-lg{width:44px;height:44px;font-size:14px}
-
-/* ── BOARD ── */
-.board-wrap{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px}
-.board-col{min-width:260px;max-width:260px;background:var(--ink2);border:1px solid var(--rule);border-radius:var(--r);display:flex;flex-direction:column}
-.col-hd{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
-.col-hd-title{font-family:var(--font-display);font-size:14px;letter-spacing:1px;flex:1}
-.col-cnt{font-size:10px;background:var(--ink3);color:var(--steel);padding:1px 6px;border-radius:3px;font-family:var(--font-mono)}
-.col-dot{width:8px;height:8px;border-radius:50%}
-.col-cards{padding:8px;display:flex;flex-direction:column;gap:6px;flex:1}
-.job-card{background:var(--ink3);border:1px solid var(--rule2);border-radius:5px;padding:11px;cursor:pointer;transition:all .15s}
-.job-card:hover{border-color:var(--amber);box-shadow:0 2px 12px rgba(240,160,0,.1)}
-.job-card-title{font-size:12px;font-weight:500;line-height:1.4;margin-bottom:7px;color:var(--white)}
-.job-card-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.job-card-team{font-size:10px;color:var(--mist);font-family:var(--font-mono);margin-left:auto}
-.add-col-btn{margin:6px 8px 8px;padding:7px;border-radius:4px;background:transparent;border:1px dashed var(--rule2);color:var(--steel);font-size:11px;cursor:pointer;text-align:center;transition:all .15s;font-family:var(--font-body)}
-.add-col-btn:hover{border-color:var(--amber);color:var(--amber)}
-
-/* ── CHECKLIST PROGRESS ── */
-.check-grid{display:flex;gap:3px;flex-wrap:wrap}
-.check-cell{width:16px;height:16px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900}
-.check-done{background:var(--green2);color:var(--green)}
-.check-partial{background:var(--amber2);color:var(--amber)}
-.check-todo{background:var(--rule2);color:var(--steel)}
-
-/* ── TEAM GRID ── */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.member-card{background:var(--ink2);border:1px solid var(--rule);border-radius:var(--r);padding:16px;transition:all .15s;cursor:pointer}
+.member-card{background:var(--ink2);border:1px solid var(--rule);border-radius:var(--r);padding:16px;transition:all .15s;cursor:pointer;position:relative}
 .member-card:hover{border-color:var(--amber);transform:translateY(-2px)}
 .member-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .member-name{font-weight:600;font-size:13px}
 .member-role{font-size:10px;color:var(--mist);font-family:var(--font-mono);margin-top:1px}
-.member-load{display:flex;gap:10px;margin-bottom:8px}
 .load-stat{text-align:center;flex:1}
 .load-stat .n{font-family:var(--font-display);font-size:22px;line-height:1}
 .load-stat .l{font-size:9px;color:var(--mist);text-transform:uppercase;letter-spacing:1px}
-.overloaded{color:var(--red)}
-.available{color:var(--green)}
-
-/* ── TIMELINE ── */
 .tl-wrap{overflow-x:auto}
-.tl-grid{display:grid}
 .tl-hd{display:flex;border-bottom:1px solid var(--rule)}
 .tl-name-hd{min-width:240px;padding:8px 12px;font-size:9px;color:var(--steel);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;border-right:1px solid var(--rule);flex-shrink:0}
 .tl-week-hd{flex:1;min-width:50px;text-align:center;font-size:9px;color:var(--steel);padding:8px 2px;font-family:var(--font-mono);border-right:1px solid var(--rule)}
@@ -173,20 +106,18 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 .tl-bar-area{flex:1;position:relative;height:38px;display:flex;align-items:center}
 .tl-bar{height:18px;border-radius:3px;position:absolute;display:flex;align-items:center;padding:0 6px;font-size:9px;font-weight:600;color:#0a0c0f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:filter .15s;font-family:var(--font-mono)}
 .tl-bar:hover{filter:brightness(1.15)}
-
-/* ── MODALS ── */
+/* MODALS */
 .overlay{position:fixed;inset:0;background:rgba(5,8,12,.8);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
 .overlay.hidden{display:none}
 .modal{background:var(--ink2);border:1px solid var(--rule2);border-radius:10px;width:580px;max-width:95vw;max-height:88vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.7)}
-.modal-lg{width:720px}
-.modal-hd{padding:18px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px}
+.modal-lg{width:740px}
+.modal-hd{padding:18px 22px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px;position:sticky;top:0;background:var(--ink2);z-index:2}
 .modal-title{font-family:var(--font-display);font-size:20px;letter-spacing:1px;flex:1}
 .modal-close{background:var(--ink3);border:none;color:var(--fog);width:26px;height:26px;border-radius:4px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .modal-close:hover{background:var(--red2);color:var(--red)}
 .modal-body{padding:18px 22px}
-.modal-footer{padding:14px 22px;border-top:1px solid var(--rule);display:flex;justify-content:flex-end;gap:8px}
-
-/* ── FORMS ── */
+.modal-footer{padding:14px 22px;border-top:1px solid var(--rule);display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:0;background:var(--ink2)}
+/* FORMS */
 .fg{margin-bottom:14px}
 .fl{font-size:10px;font-weight:600;color:var(--fog);margin-bottom:5px;display:block;letter-spacing:.8px;text-transform:uppercase;font-family:var(--font-mono)}
 .fi,.fs,.ft{width:100%;background:var(--ink3);border:1px solid var(--rule2);border-radius:var(--r);padding:8px 10px;font-size:13px;color:var(--white);outline:none;font-family:var(--font-body);transition:border-color .15s}
@@ -195,45 +126,91 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 .fs option{background:var(--ink3)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-
-/* ── SECTION CHECKLIST ── */
-.section-checks{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-.sch-item{display:flex;align-items:center;gap:5px;background:var(--ink3);border:1px solid var(--rule2);border-radius:4px;padding:4px 8px;font-size:11px;cursor:pointer;transition:all .15s;font-family:var(--font-mono)}
-.sch-item.done{background:var(--green2);border-color:var(--green);color:var(--green)}
-.sch-item.done::before{content:'✓ '}
-.sch-item:not(.done){color:var(--mist)}
-.sch-item:not(.done)::before{content:'○ '}
-
-/* ── TOAST ── */
+/* TOAST */
 .toast{position:fixed;bottom:20px;right:20px;background:var(--ink3);border:1px solid var(--rule2);border-radius:6px;padding:10px 16px;font-size:12px;font-weight:500;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.5);display:flex;align-items:center;gap:8px;transform:translateY(60px);opacity:0;transition:all .3s;font-family:var(--font-mono)}
 .toast.show{transform:translateY(0);opacity:1}
-
-/* ── MISC ── */
+/* INLINE PCT INPUTS */
+.pct-inline{width:46px;background:transparent;border:1px solid transparent;border-radius:3px;font-size:11px;font-family:var(--font-mono);font-weight:600;padding:2px 4px;text-align:center;outline:none;transition:background .15s,border-color .15s;-moz-appearance:textfield;cursor:pointer}
+.pct-inline::-webkit-outer-spin-button,.pct-inline::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.pct-inline:hover{background:var(--ink3);border-color:var(--rule2)}
+.pct-inline:focus{background:var(--ink3);border-color:var(--amber);cursor:text;width:54px}
+/* ROW ACTIONS */
+.tbl tr .row-actions{opacity:0;transition:opacity .15s}
+.tbl tr:hover .row-actions{opacity:1}
+.row-actions-cell{white-space:nowrap;width:88px}
+/* MISC */
 .divider{border:none;border-top:1px solid var(--rule);margin:16px 0}
-.tag{font-size:9px;padding:2px 6px;border-radius:2px;font-family:var(--font-mono);font-weight:600}
-.flex{display:flex;align-items:center}
-.gap6{gap:6px}
-.gap10{gap:10px}
-.ml-auto{margin-left:auto}
-.text-mist{color:var(--mist)}
-.text-mono{font-family:var(--font-mono)}
-.bold{font-weight:600}
 .section-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .section-head{font-family:var(--font-display);font-size:18px;letter-spacing:1px}
-.pn{font-size:10px;color:var(--mist);font-family:var(--font-mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:280px}
+.pn{font-size:11px;color:var(--fog);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .detail-field label{font-size:9px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:3px}
 .detail-field span{font-size:13px;color:var(--white)}
+
+/* ══════ JOB DETAIL SIDE PANEL ══════ */
+.job-panel-overlay{position:fixed;inset:0;z-index:500;pointer-events:none}
+.job-panel-overlay.open{pointer-events:all}
+.job-panel-scrim{position:absolute;inset:0;background:rgba(5,8,12,.5);opacity:0;transition:opacity .25s;cursor:pointer}
+.job-panel-overlay.open .job-panel-scrim{opacity:1}
+.job-panel{position:absolute;top:0;right:0;bottom:0;width:560px;max-width:95vw;background:var(--ink2);border-left:1px solid var(--rule2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+.job-panel-overlay.open .job-panel{transform:translateX(0)}
+.jp-header{padding:16px 20px;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:12px;flex-shrink:0}
+.jp-title-block{flex:1;min-width:0}
+.jp-name{font-size:13px;font-weight:600;line-height:1.4;color:var(--white);margin-bottom:5px}
+.jp-badges{display:flex;gap:5px;flex-wrap:wrap}
+.jp-close{background:var(--ink3);border:none;color:var(--fog);width:28px;height:28px;border-radius:4px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.jp-close:hover{background:var(--red2);color:var(--red)}
+/* TABS */
+.jp-tabs{display:flex;border-bottom:1px solid var(--rule);flex-shrink:0}
+.jp-tab{flex:1;padding:10px 0;text-align:center;font-size:10px;font-weight:700;font-family:var(--font-mono);letter-spacing:1px;text-transform:uppercase;color:var(--mist);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;user-select:none}
+.jp-tab:hover{color:var(--fog)}
+.jp-tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+.jp-body{flex:1;overflow-y:auto;padding:18px 20px}
+.jp-panel{display:none}.jp-panel.active{display:block}
+.jp-footer{padding:12px 20px;border-top:1px solid var(--rule);display:flex;gap:8px;justify-content:flex-end;flex-shrink:0}
+/* CHECKLIST CARDS (editable) */
+.chk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.chk-card{background:var(--ink3);border-radius:5px;padding:10px 12px;border:1px solid var(--rule2);transition:border-color .15s}
+.chk-card:focus-within{border-color:var(--amber)}
+.chk-lbl{font-size:8px;color:var(--mist);font-family:var(--font-mono);margin-bottom:4px;text-transform:uppercase;letter-spacing:1.2px}
+.chk-input{width:100%;background:transparent;border:none;outline:none;font-family:var(--font-display);font-size:26px;line-height:1;padding:0;-moz-appearance:textfield;cursor:pointer;transition:color .2s}
+.chk-input::-webkit-outer-spin-button,.chk-input::-webkit-inner-spin-button{-webkit-appearance:none}
+.chk-bar{height:3px;background:var(--rule2);border-radius:2px;margin-top:6px;overflow:hidden}
+.chk-bar-fill{height:100%;border-radius:2px;transition:width .4s,background .4s}
+/* TODO */
+.todo-add-row{display:flex;gap:8px;margin-bottom:14px}
+.todo-add-row .fi{flex:1;margin:0;font-size:12px;padding:7px 10px}
+.todo-item{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;background:var(--ink3);border-radius:5px;margin-bottom:6px;border:1px solid var(--rule2);transition:all .2s}
+.todo-item:hover{border-color:var(--rule)}
+.todo-item.done-item{opacity:.5}
+.todo-cb{width:16px;height:16px;accent-color:var(--amber);cursor:pointer;flex-shrink:0;margin-top:1px}
+.todo-text{flex:1;font-size:12px;line-height:1.5;word-break:break-word;cursor:default}
+.todo-item.done-item .todo-text{text-decoration:line-through;color:var(--mist)}
+.todo-del{background:none;border:none;color:var(--steel);cursor:pointer;font-size:13px;padding:0 2px;flex-shrink:0;transition:color .15s;line-height:1;opacity:0}
+.todo-item:hover .todo-del{opacity:1}
+.todo-del:hover{color:var(--red)}
+.todo-meta{font-size:9px;color:var(--steel);font-family:var(--font-mono);margin-top:2px}
+.todo-empty{color:var(--mist);font-size:12px;text-align:center;padding:28px;font-family:var(--font-mono)}
+/* COMMENTS */
+.comment-item{padding:10px 14px;background:var(--ink3);border-radius:5px;margin-bottom:8px;border:1px solid var(--rule2)}
+.comment-header{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.comment-author{font-size:10px;font-weight:700;font-family:var(--font-mono);color:var(--amber)}
+.comment-time{font-size:9px;color:var(--steel);font-family:var(--font-mono)}
+.comment-del{margin-left:auto;background:none;border:none;color:var(--steel);cursor:pointer;font-size:12px;opacity:0;transition:all .15s}
+.comment-item:hover .comment-del{opacity:1}
+.comment-del:hover{color:var(--red)}
+.comment-text{font-size:12px;color:var(--fog);line-height:1.6}
+.comment-add-row{display:flex;gap:8px;margin-top:14px}
+.comment-add-row .ft{flex:1;min-height:52px;font-size:12px;padding:7px 10px;margin:0}
+.remark-box{background:var(--ink3);border:1px solid var(--rule2);border-radius:5px;padding:12px;font-size:12px;color:var(--fog);line-height:1.7;white-space:pre-wrap;min-height:60px;cursor:text;transition:border-color .15s}
+.remark-box:focus{outline:none;border-color:var(--amber)}
+.section-lbl{font-size:9px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;margin-top:14px;display:block}
 </style>
 </head>
 <body>
 <div id="app">
-<!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="logo">
-    <div class="logo-mark">NZD</div>
-    <div class="logo-sub">Structural Studio</div>
-  </div>
+  <div class="logo"><div class="logo-mark">NZD</div><div class="logo-sub">Structural Studio</div></div>
   <div class="nav-section">Views</div>
   <div class="nav-item active" data-view="dashboard" onclick="nav('dashboard')"><span class="nav-icon">⊞</span>Dashboard</div>
   <div class="nav-item" data-view="jobs" onclick="nav('jobs')"><span class="nav-icon">◈</span>Job Stage<span class="nav-badge" id="nb-jobs">0</span></div>
@@ -251,7 +228,6 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
   <div class="topbar">
     <div class="topbar-title" id="page-title">DASHBOARD</div>
@@ -263,33 +239,79 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 </div>
 </div>
 
+<!-- ══════ JOB SIDE PANEL ══════ -->
+<div class="job-panel-overlay" id="job-panel-overlay">
+  <div class="job-panel-scrim" onclick="closeJobPanel()"></div>
+  <div class="job-panel" id="job-panel">
+    <div class="jp-header">
+      <div class="jp-title-block">
+        <div class="jp-name" id="jp-name">—</div>
+        <div class="jp-badges" id="jp-badges"></div>
+      </div>
+      <button class="jp-close" onclick="closeJobPanel()">✕</button>
+    </div>
+    <div class="jp-tabs">
+      <div class="jp-tab active" onclick="jpTab('overview')">Overview</div>
+      <div class="jp-tab" onclick="jpTab('todo')">To-Do</div>
+      <div class="jp-tab" onclick="jpTab('comments')">Comments</div>
+    </div>
+    <div class="jp-body">
+      <!-- OVERVIEW TAB -->
+      <div class="jp-panel active" id="jp-overview">
+        <div class="detail-grid" id="jp-meta"></div>
+        <span class="section-lbl">Checklist Progress — click any value to edit</span>
+        <div class="chk-grid" id="jp-chklist"></div>
+        <span class="section-lbl">Remarks</span>
+        <div class="remark-box" id="jp-remarks" contenteditable="true" data-placeholder="Add remarks…"></div>
+      </div>
+      <!-- TODO TAB -->
+      <div class="jp-panel" id="jp-todo">
+        <div class="todo-add-row">
+          <input class="fi" id="todo-input" placeholder="Add a task… press Enter" onkeydown="if(event.key==='Enter')addTodo()"/>
+          <button class="btn btn-amber btn-sm" onclick="addTodo()">Add</button>
+        </div>
+        <div id="todo-list"></div>
+      </div>
+      <!-- COMMENTS TAB -->
+      <div class="jp-panel" id="jp-comments">
+        <div id="comment-list"></div>
+        <div class="comment-add-row">
+          <textarea class="ft" id="comment-input" placeholder="Write a comment…" rows="2" style="flex:1;min-height:52px;font-size:12px;padding:7px 10px;margin:0"></textarea>
+          <button class="btn btn-amber btn-sm" onclick="addComment()" style="align-self:flex-end">Post</button>
+        </div>
+      </div>
+    </div>
+    <div class="jp-footer">
+      <button class="btn btn-danger btn-sm" id="jp-delete">Delete</button>
+      <button class="btn btn-ghost btn-sm" id="jp-edit">✎ Edit</button>
+      <button class="btn btn-success btn-sm" id="jp-complete">Mark Complete</button>
+    </div>
+  </div>
+</div>
+
 <!-- JOB MODAL -->
 <div class="overlay hidden" id="job-modal">
 <div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="jm-title">NEW JOB</div>
-    <button class="modal-close" onclick="closeModal('job-modal')">✕</button>
-  </div>
+  <div class="modal-hd"><div class="modal-title" id="jm-title">NEW JOB</div><button class="modal-close" onclick="closeModal('job-modal')">✕</button></div>
   <div class="modal-body">
     <div class="fg"><label class="fl">Project Name *</label><input class="fi" id="jm-name" placeholder="e.g. S-25-001 - Address, City, TX"/></div>
     <div class="fg"><label class="fl">Job Number</label><input class="fi" id="jm-num" placeholder="PN-26-001"/></div>
     <div class="form-row">
-      <div class="fg"><label class="fl">Stage</label>
-        <select class="fs" id="jm-stage"><option>PRODUCTION</option><option>JOB</option></select></div>
-      <div class="fg"><label class="fl">Priority</label>
-        <select class="fs" id="jm-priority"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></div>
+      <div class="fg"><label class="fl">Stage</label><select class="fs" id="jm-stage"><option>PRODUCTION</option><option>JOB</option></select></div>
+      <div class="fg"><label class="fl">Priority</label><select class="fs" id="jm-priority"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></div>
     </div>
     <div class="form-row">
-      <div class="fg"><label class="fl">Assigned Team</label>
-        <select class="fs" id="jm-team"><option value="">—</option><option>N1</option><option>N2</option><option>N3</option></select></div>
-      <div class="fg"><label class="fl">Assigned Person</label>
-        <select class="fs" id="jm-person"></select></div>
+      <div class="fg"><label class="fl">Team</label><select class="fs" id="jm-team"><option value="">—</option><option>N1</option><option>N2</option><option>N3</option></select></div>
+      <div class="fg"><label class="fl">Person</label><select class="fs" id="jm-person"></select></div>
     </div>
     <div class="form-row">
       <div class="fg"><label class="fl">Start Date</label><input class="fi" type="date" id="jm-start"/></div>
       <div class="fg"><label class="fl">End Date</label><input class="fi" type="date" id="jm-end"/></div>
     </div>
-    <div class="fg"><label class="fl">Revision</label><input class="fi" id="jm-rev" placeholder="R1"/></div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">Revision</label><input class="fi" id="jm-rev" placeholder="R1"/></div>
+      <div class="fg"><label class="fl">Status</label><select class="fs" id="jm-status"><option value="">—</option><option>ON TRACK</option><option>DELAYED</option><option>NOT STARTED</option><option>COMPLETE</option></select></div>
+    </div>
     <div class="fg"><label class="fl">Remarks</label><textarea class="ft" id="jm-remarks" placeholder="Notes…"></textarea></div>
     <hr class="divider"/>
     <div class="fl">Checklist Progress (%)</div>
@@ -303,8 +325,6 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
       <div class="fg"><label class="fl">GFC</label><input class="fi" id="jm-gfc" type="number" min="0" max="100" placeholder="0"/></div>
       <div class="fg"><label class="fl">BOQ</label><input class="fi" id="jm-boq" type="number" min="0" max="100" placeholder="0"/></div>
     </div>
-    <div class="fg"><label class="fl">Status</label>
-      <select class="fs" id="jm-status"><option value="">—</option><option>ON TRACK</option><option>DELAYED</option><option>NOT STARTED</option><option>COMPLETE</option></select></div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-ghost btn-sm" onclick="closeModal('job-modal')">Cancel</button>
@@ -316,24 +336,17 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 <!-- QUOTE MODAL -->
 <div class="overlay hidden" id="quote-modal">
 <div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="qm-title">NEW QUOTE</div>
-    <button class="modal-close" onclick="closeModal('quote-modal')">✕</button>
-  </div>
+  <div class="modal-hd"><div class="modal-title" id="qm-title">NEW QUOTE</div><button class="modal-close" onclick="closeModal('quote-modal')">✕</button></div>
   <div class="modal-body">
     <div class="fg"><label class="fl">Project Name *</label><input class="fi" id="qm-name" placeholder="S-25-xxx - Address, City"/></div>
     <div class="fg"><label class="fl">RFQ Number</label><input class="fi" id="qm-rfq" placeholder="RFQ-001"/></div>
     <div class="form-row">
-      <div class="fg"><label class="fl">Assigned Team</label>
-        <select class="fs" id="qm-team"><option value="">—</option><option>N1</option><option>N2</option><option>N3</option></select></div>
-      <div class="fg"><label class="fl">Assigned Person</label>
-        <select class="fs" id="qm-person"></select></div>
+      <div class="fg"><label class="fl">Team</label><select class="fs" id="qm-team"><option value="">—</option><option>N1</option><option>N2</option><option>N3</option></select></div>
+      <div class="fg"><label class="fl">Person</label><select class="fs" id="qm-person"></select></div>
     </div>
     <div class="form-row">
-      <div class="fg"><label class="fl">Priority</label>
-        <select class="fs" id="qm-priority"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></div>
-      <div class="fg"><label class="fl">Status</label>
-        <select class="fs" id="qm-status"><option value="">—</option><option>ON TRACK</option><option>DELAYED</option><option>NOT STARTED</option><option>COMPLETE</option></select></div>
+      <div class="fg"><label class="fl">Priority</label><select class="fs" id="qm-priority"><option value="">—</option><option>High</option><option>Medium</option><option>Low</option></select></div>
+      <div class="fg"><label class="fl">Status</label><select class="fs" id="qm-status"><option value="">—</option><option>ON TRACK</option><option>DELAYED</option><option>NOT STARTED</option><option>COMPLETE</option></select></div>
     </div>
     <div class="form-row">
       <div class="fg"><label class="fl">Start Date</label><input class="fi" type="date" id="qm-start"/></div>
@@ -353,39 +366,69 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 </div>
 </div>
 
-<!-- DETAIL MODAL -->
-<div class="overlay hidden" id="detail-modal">
-<div class="modal modal-lg">
-  <div class="modal-hd">
-    <div class="modal-title" id="dm-title">PROJECT DETAIL</div>
-    <button class="modal-close" onclick="closeModal('detail-modal')">✕</button>
+<!-- MEMBER / TEAM MODALS (unchanged) -->
+<div class="overlay hidden" id="member-modal">
+<div class="modal">
+  <div class="modal-hd"><div class="modal-title" id="mm2-title">ADD MEMBER</div><button class="modal-close" onclick="closeModal('member-modal')">✕</button></div>
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="fg"><label class="fl">Full Name *</label><input class="fi" id="mm2-name" placeholder="John Smith"/></div>
+      <div class="fg"><label class="fl">Initials / ID *</label><input class="fi" id="mm2-id" placeholder="JS" maxlength="5"/></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">Role</label><input class="fi" id="mm2-role" placeholder="Structural Engineer"/></div>
+      <div class="fg"><label class="fl">Department</label><select class="fs" id="mm2-dept"><option>Structural Design</option><option>FrameCAD</option><option>Detailing</option></select></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">Capacity Limit</label><input class="fi" id="mm2-limit" type="number" min="1" max="20" placeholder="5"/></div>
+      <div class="fg"><label class="fl">Tasks Used</label><input class="fi" id="mm2-used" type="number" min="0" max="20" placeholder="0"/></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">Color</label><input class="fi" id="mm2-color" type="color" value="#4aa3f5" style="height:38px;padding:4px 8px;cursor:pointer"/></div>
+      <div class="fg"><label class="fl">Team</label><select class="fs" id="mm2-team"><option value="">— None —</option><option value="N1">N1</option><option value="N2">N2</option><option value="N3">N3</option></select></div>
+    </div>
   </div>
-  <div class="modal-body" id="dm-body"></div>
   <div class="modal-footer">
-    <button class="btn btn-danger btn-sm" id="dm-delete">Delete</button>
-    <button class="btn btn-ghost btn-sm" id="dm-edit">Edit</button>
-    <button class="btn btn-success btn-sm" id="dm-complete">Mark Complete</button>
+    <button class="btn btn-ghost btn-sm" onclick="closeModal('member-modal')">Cancel</button>
+    <button class="btn btn-amber btn-sm" onclick="saveMember()">Save</button>
   </div>
 </div>
 </div>
 
-<!-- MAIL TASK MODAL -->
+<div class="overlay hidden" id="team-modal">
+<div class="modal">
+  <div class="modal-hd"><div class="modal-title" id="tm2-title">EDIT TEAM</div><button class="modal-close" onclick="closeModal('team-modal')">✕</button></div>
+  <div class="modal-body">
+    <div class="fg"><label class="fl">Team Label</label><input class="fi" id="tm2-label" placeholder="N1 – Quote"/></div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">SPOC</label><input class="fi" id="tm2-spoc" placeholder="Point of Contact"/></div>
+      <div class="fg"><label class="fl">Lead</label><input class="fi" id="tm2-lead" placeholder="Team Lead"/></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label class="fl">Focus</label><select class="fs" id="tm2-focus"><option>QUOTE</option><option>JOB</option><option>PRODUCTION</option></select></div>
+      <div class="fg"><label class="fl">Color</label><input class="fi" id="tm2-color" type="color" style="height:38px;padding:4px 8px;cursor:pointer"/></div>
+    </div>
+    <div class="fg"><label class="fl">Members</label><div id="tm2-members" style="display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:var(--ink3);border-radius:var(--r);border:1px solid var(--rule2);min-height:48px"></div></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-ghost btn-sm" onclick="closeModal('team-modal')">Cancel</button>
+    <button class="btn btn-amber btn-sm" onclick="saveTeam()">Save</button>
+  </div>
+</div>
+</div>
+
 <div class="overlay hidden" id="mailtask-modal">
 <div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="mm-title">NEW MAIL TASK</div>
-    <button class="modal-close" onclick="closeModal('mailtask-modal')">✕</button>
-  </div>
+  <div class="modal-hd"><div class="modal-title" id="mm-title">NEW MAIL TASK</div><button class="modal-close" onclick="closeModal('mailtask-modal')">✕</button></div>
   <div class="modal-body">
     <div class="fg"><label class="fl">Project Name *</label><input class="fi" id="mm-name" placeholder="Project / address…"/></div>
     <div class="form-row">
-      <div class="fg"><label class="fl">Stage</label>
-        <select class="fs" id="mm-stage"><option>Production</option><option>JOB</option><option>QUOTE</option><option>CO</option></select></div>
+      <div class="fg"><label class="fl">Stage</label><select class="fs" id="mm-stage"><option>Production</option><option>JOB</option><option>QUOTE</option><option>CO</option></select></div>
       <div class="fg"><label class="fl">City Permit %</label><input class="fi" id="mm-permit" type="number" min="0" max="100" placeholder="0"/></div>
     </div>
     <div class="fg"><label class="fl">Remarks</label><textarea class="ft" id="mm-remarks" placeholder="Status, action items…"></textarea></div>
     <div class="fg"><label class="fl">Structural Team Remarks</label><textarea class="ft" id="mm-struct" placeholder="Internal notes…"></textarea></div>
-    <div class="fg"><label class="fl">Assigned To (comma-sep initials)</label><input class="fi" id="mm-assigned" placeholder="GST, NC, AD"/></div>
+    <div class="fg"><label class="fl">Assigned (comma-sep initials)</label><input class="fi" id="mm-assigned" placeholder="GST, NC, AD"/></div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-ghost btn-sm" onclick="closeModal('mailtask-modal')">Cancel</button>
@@ -396,117 +439,30 @@ body{font-family:var(--font-body);background:var(--ink);color:var(--white);min-h
 
 <div class="toast" id="toast"><span id="ti">✓</span><span id="tm">Done</span></div>
 
-<!-- MEMBER MODAL -->
-<div class="overlay hidden" id="member-modal">
-<div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="mm2-title">ADD MEMBER</div>
-    <button class="modal-close" onclick="closeModal('member-modal')">✕</button>
-  </div>
-  <div class="modal-body">
-    <div class="form-row">
-      <div class="fg"><label class="fl">Full Name *</label><input class="fi" id="mm2-name" placeholder="e.g. John Smith"/></div>
-      <div class="fg"><label class="fl">Initials / ID *</label><input class="fi" id="mm2-id" placeholder="e.g. JS" maxlength="5"/></div>
-    </div>
-    <div class="form-row">
-      <div class="fg"><label class="fl">Role</label><input class="fi" id="mm2-role" placeholder="e.g. Structural Engineer"/></div>
-      <div class="fg"><label class="fl">Department</label>
-        <select class="fs" id="mm2-dept">
-          <option>Structural Design</option>
-          <option>FrameCAD</option>
-          <option>Detailing</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="fg"><label class="fl">Capacity Limit (tasks)</label><input class="fi" id="mm2-limit" type="number" min="1" max="20" placeholder="5"/></div>
-      <div class="fg"><label class="fl">Tasks Currently Used</label><input class="fi" id="mm2-used" type="number" min="0" max="20" placeholder="0"/></div>
-    </div>
-    <div class="form-row">
-      <div class="fg"><label class="fl">Avatar Color</label><input class="fi" id="mm2-color" type="color" value="#4aa3f5" style="height:38px;padding:4px 8px;cursor:pointer"/></div>
-      <div class="fg"><label class="fl">Assign to Team</label>
-        <select class="fs" id="mm2-team">
-          <option value="">— None —</option>
-          <option value="N1">N1 – Quote</option>
-          <option value="N2">N2 – Job</option>
-          <option value="N3">N3 – Job</option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-ghost btn-sm" onclick="closeModal('member-modal')">Cancel</button>
-    <button class="btn btn-amber btn-sm" onclick="saveMember()">Save Member</button>
-  </div>
-</div>
-</div>
-
-<!-- TEAM EDIT MODAL -->
-<div class="overlay hidden" id="team-modal">
-<div class="modal">
-  <div class="modal-hd">
-    <div class="modal-title" id="tm2-title">EDIT TEAM</div>
-    <button class="modal-close" onclick="closeModal('team-modal')">✕</button>
-  </div>
-  <div class="modal-body">
-    <div class="fg"><label class="fl">Team Label</label><input class="fi" id="tm2-label" placeholder="e.g. N1 – Quote"/></div>
-    <div class="form-row">
-      <div class="fg"><label class="fl">SPOC</label><input class="fi" id="tm2-spoc" placeholder="Point of Contact"/></div>
-      <div class="fg"><label class="fl">Lead</label><input class="fi" id="tm2-lead" placeholder="Team Lead"/></div>
-    </div>
-    <div class="form-row">
-      <div class="fg"><label class="fl">Focus</label>
-        <select class="fs" id="tm2-focus"><option>QUOTE</option><option>JOB</option><option>PRODUCTION</option></select>
-      </div>
-      <div class="fg"><label class="fl">Color</label><input class="fi" id="tm2-color" type="color" style="height:38px;padding:4px 8px;cursor:pointer"/></div>
-    </div>
-    <div class="fg">
-      <label class="fl">Members (select all that apply)</label>
-      <div id="tm2-members" style="display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:var(--ink3);border-radius:var(--r);border:1px solid var(--rule2);min-height:48px"></div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-ghost btn-sm" onclick="closeModal('team-modal')">Cancel</button>
-    <button class="btn btn-amber btn-sm" onclick="saveTeam()">Save Team</button>
-  </div>
-</div>
-</div>
-
 <script>
-// ═══════════════ API CONFIG ═══════════════
-const API = window.location.origin; // same host as server.py
-
+// ═══════════════ API ═══════════════
+const API = window.location.origin;
 async function apiFetch(path, method='GET', body=null){
-  const opts = { method, headers:{'Content-Type':'application/json'} };
-  if(body) opts.body = JSON.stringify(body);
-  const r = await fetch(API + path, opts);
-  if(!r.ok){ const t=await r.text(); console.error(path, r.status, t); throw new Error(t); }
+  const opts={method,headers:{'Content-Type':'application/json'}};
+  if(body) opts.body=JSON.stringify(body);
+  const r=await fetch(API+path,opts);
+  if(!r.ok){const t=await r.text();console.error(path,r.status,t);throw new Error(t);}
   return r.json();
 }
-const apiGet  = p       => apiFetch(p);
-const apiPost = (p,b)   => apiFetch(p,'POST',b);
-const apiPut  = (p,b)   => apiFetch(p,'PUT',b);
-const apiDel  = p       => apiFetch(p,'DELETE');
+const apiGet=(p)=>apiFetch(p);
+const apiPost=(p,b)=>apiFetch(p,'POST',b);
+const apiPut=(p,b)=>apiFetch(p,'PUT',b);
+const apiDel=(p)=>apiFetch(p,'DELETE');
 
-// ═══════════════ DATA (loaded from DB) ═══════════════
-let TEAMS   = {};
-let MEMBERS = [];
-
-let jobs = [];
-let quotes = [];
-let cos = [];
-let mailTasks = [];
-let completed = [];
-
-let currentView = 'dashboard';
-let editingItem = null;
-let editingType = null;
+// ═══════════════ STATE ═══════════════
+let TEAMS={}, MEMBERS=[], jobs=[], quotes=[], cos=[], mailTasks=[], completed=[];
+let currentView='dashboard';
+let editingItem=null, editingMemberId=null, editingTeamKey=null;
+let panelJobId=null; // currently open side panel job
 
 // ═══════════════ UTILS ═══════════════
-const memberByInit = (init) => MEMBERS.find(m=>m.id===init)||MEMBERS.find(m=>m.name.toLowerCase().includes((init||'').toLowerCase()));
-const memberColor = (init) => {const m=memberByInit(init); return m?m.color:'#555'};
-const memberName = (init) => {const m=memberByInit(init); return m?m.name:init||'—'};
-
+const memberByInit=(init)=>MEMBERS.find(m=>m.id===init)||MEMBERS.find(m=>m.name.toLowerCase().includes((init||'').toLowerCase()));
+const memberColor=(init)=>{const m=memberByInit(init);return m?m.color:'#555'};
 function av(init,size='sm'){
   const m=memberByInit(init);
   const col=m?m.color:'#444';
@@ -517,41 +473,23 @@ function statusBadge(s){
   const m={'ON TRACK':'badge-on-track','DELAYED':'badge-delayed','NOT STARTED':'badge-not-started','COMPLETE':'badge-complete','COMPLETED':'badge-complete'};
   return s?`<span class="badge ${m[s]||'badge-not-started'}">${s}</span>`:'<span class="badge badge-not-started">—</span>';
 }
-function priorityBadge(p){
-  const m={'High':'badge-high','Medium':'badge-medium','Low':'badge-low'};
-  return p?`<span class="badge ${m[p]||''}">${p}</span>`:'';
-}
-function stageBadge(s){
-  const m={'PRODUCTION':'badge-production','JOB':'badge-job','QUOTE':'badge-quote'};
-  return s?`<span class="badge ${m[s]||'badge-not-started'}">${s}</span>`:'';
-}
-function teamBadge(t){
-  const m={'N1':'badge-n1','N2':'badge-n2','N3':'badge-n3'};
-  return t?`<span class="badge ${m[t]||''}">${t}</span>`:'';
-}
-function pct(vals){
-  const v=vals.filter(x=>x>0);
-  return v.length?Math.round(v.reduce((a,b)=>a+b,0)/vals.length):0;
-}
+function priorityBadge(p){const m={'High':'badge-high','Medium':'badge-medium','Low':'badge-low'};return p?`<span class="badge ${m[p]||''}">${p}</span>`:''}
+function stageBadge(s){const m={'PRODUCTION':'badge-production','JOB':'badge-job','QUOTE':'badge-quote'};return s?`<span class="badge ${m[s]||'badge-not-started'}">${s}</span>`:''}
+function teamBadge(t){const m={'N1':'badge-n1','N2':'badge-n2','N3':'badge-n3'};return t?`<span class="badge ${m[t]||''}">${t}</span>`:''}
+function pct(vals){const v=vals.filter(x=>x>0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/vals.length):0}
 function progBar(val,color='#f0a000'){
-  return `<div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:60px"><div class="prog-fill" style="width:${val}%;background:${color}"></div></div><span style="font-size:10px;font-family:var(--font-mono);color:var(--mist)">${val}%</span></div>`;
+  return `<div style="display:flex;align-items:center;gap:6px">
+    <div class="prog-wrap" style="width:50px"><div class="prog-fill pct-prog-bar" style="width:${val}%;background:${color}"></div></div>
+    <span class="pct-prog-txt" style="font-size:10px;font-family:var(--font-mono);color:var(--mist)">${val}%</span>
+  </div>`;
 }
-function checklist(items){
-  return items.map(([lbl,val])=>{
-    const cls=val>=100?'check-done':val>0?'check-partial':'check-todo';
-    return `<div class="check-cell ${cls}" title="${lbl}: ${val}%">${val>=100?'✓':val>0?'~':''}</div>`;
-  }).join('');
-}
-function formatDate(d){
-  if(!d)return '—';
-  try{return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'})}catch{return d}
-}
+function formatDate(d){if(!d)return '—';try{return new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'})}catch{return d}}
 function toast(msg,icon='✓'){
   document.getElementById('tm').textContent=msg;
   document.getElementById('ti').textContent=icon;
   const el=document.getElementById('toast');
   el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2600);
+  setTimeout(()=>el.classList.remove('show'),2400);
 }
 function openModal(id){document.getElementById(id).classList.remove('hidden')}
 function closeModal(id){document.getElementById(id).classList.add('hidden')}
@@ -559,9 +497,7 @@ function closeModal(id){document.getElementById(id).classList.add('hidden')}
 // ═══════════════ NAV ═══════════════
 function nav(view){
   currentView=view;
-  document.querySelectorAll('.nav-item').forEach(el=>{
-    el.classList.toggle('active',el.dataset.view===view);
-  });
+  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.view===view));
   const titles={dashboard:'DASHBOARD',jobs:'JOB STAGE',quotes:'QUOTE STAGE',co:'CHANGE ORDERS',mailtask:'MAIL TASKS',team:'TEAM & CAPACITY',timeline:'SCHEDULE',completed:'COMPLETED'};
   document.getElementById('page-title').textContent=titles[view]||view.toUpperCase();
   render();
@@ -574,8 +510,7 @@ function updateBadges(){
   document.getElementById('nb-co').textContent=cos.length;
   document.getElementById('nb-mail').textContent=mailTasks.length;
   document.getElementById('nb-done').textContent=completed.length;
-  // capacity
-  const totalLimit=MEMBERS.reduce((a,m)=>a+m.limit,0);
+  const totalLimit=MEMBERS.reduce((a,m)=>a+m.limit,0)||1;
   const totalUsed=MEMBERS.reduce((a,m)=>a+m.used,0);
   const pctCap=Math.min(Math.round(totalUsed/totalLimit*100),120);
   const bar=document.getElementById('studio-cap-bar');
@@ -584,7 +519,6 @@ function updateBadges(){
   document.getElementById('studio-cap-meta').textContent=`${totalUsed}/${totalLimit} active tasks`;
 }
 
-// ═══════════════ RENDER ═══════════════
 function render(){
   const v=currentView;
   if(v==='dashboard') renderDashboard();
@@ -597,23 +531,21 @@ function render(){
   else if(v==='completed') renderCompleted();
 }
 
-// ─── DASHBOARD ───
+// ═══════════════ DASHBOARD ═══════════════
 function renderDashboard(){
   const delayed=jobs.filter(j=>j.status==='DELAYED').length+quotes.filter(q=>q.status==='DELAYED').length;
   const onTrack=jobs.filter(j=>j.status==='ON TRACK').length+quotes.filter(q=>q.status==='ON TRACK').length;
-  const highPri=jobs.filter(j=>j.priority==='High').length+quotes.filter(q=>q.priority==='High').length;
   const overloaded=MEMBERS.filter(m=>m.used>m.limit).length;
-
   document.getElementById('main-content').innerHTML=`
     <div class="stats-grid">
-      <div class="stat" style="--line-color:#4aa3f5"><div class="stat-val" style="color:#4aa3f5">${quotes.length}</div><div class="stat-lbl">Quotes Active</div></div>
-      <div class="stat" style="--line-color:#f0a000"><div class="stat-val" style="color:#f0a000">${jobs.length}</div><div class="stat-lbl">Jobs Active</div></div>
+      <div class="stat" style="--line-color:#4aa3f5"><div class="stat-val" style="color:#4aa3f5">${quotes.length}</div><div class="stat-lbl">Quotes</div></div>
+      <div class="stat" style="--line-color:#f0a000"><div class="stat-val" style="color:#f0a000">${jobs.length}</div><div class="stat-lbl">Jobs</div></div>
       <div class="stat" style="--line-color:#a78bfa"><div class="stat-val" style="color:#a78bfa">${cos.length}</div><div class="stat-lbl">Change Orders</div></div>
       <div class="stat" style="--line-color:#2ec27e"><div class="stat-val" style="color:#2ec27e">${onTrack}</div><div class="stat-lbl">On Track</div></div>
       <div class="stat" style="--line-color:#e84040"><div class="stat-val" style="color:#e84040">${delayed}</div><div class="stat-lbl">Delayed</div></div>
       <div class="stat" style="--line-color:#e84040"><div class="stat-val" style="color:${overloaded>0?'#e84040':'#2ec27e'}">${overloaded}</div><div class="stat-lbl">Overloaded</div></div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px">
       ${Object.entries(TEAMS).map(([key,t])=>{
         const tjobs=jobs.filter(j=>j.team===key);
         const tquotes=quotes.filter(q=>q.team===key);
@@ -621,7 +553,7 @@ function renderDashboard(){
         return `<div class="panel">
           <div class="panel-header" style="border-left:3px solid ${t.color}">
             <div class="panel-title" style="color:${t.color}">${t.label}</div>
-            <span style="font-size:10px;color:var(--mist);font-family:var(--font-mono)">SPOC: ${t.spoc}</span>
+            <span style="font-size:10px;color:var(--mist);font-family:var(--font-mono)">${t.spoc}</span>
           </div>
           <div style="padding:12px 14px">
             <div style="display:flex;gap:16px;margin-bottom:10px">
@@ -629,7 +561,6 @@ function renderDashboard(){
               <div class="load-stat"><div class="n" style="color:#4aa3f5">${tquotes.length}</div><div class="l">Quotes</div></div>
               <div class="load-stat"><div class="n" style="color:${delayed2>0?'#e84040':'#2ec27e'}">${delayed2}</div><div class="l">Delayed</div></div>
             </div>
-            <div style="font-size:10px;color:var(--mist);font-family:var(--font-mono);margin-bottom:6px">Members</div>
             <div style="display:flex;gap:4px;flex-wrap:wrap">
               ${t.members.map(m=>{const mb=MEMBERS.find(x=>x.name===m||x.name.includes(m));return mb?`<div title="${mb.name}" class="av av-sm" style="background:${mb.color}20;color:${mb.color};border:1px solid ${mb.color}40">${mb.id}</div>`:''}).join('')}
             </div>
@@ -640,29 +571,23 @@ function renderDashboard(){
     <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px">
       <div class="panel">
         <div class="panel-header"><div class="panel-title">ACTIVE JOBS</div><button class="btn btn-ghost btn-sm" onclick="nav('jobs')">View All</button></div>
-        <table class="tbl">
-          <thead><tr><th>Project</th><th>Team</th><th>Status</th><th>Progress</th></tr></thead>
-          <tbody>
-          ${jobs.slice(0,7).map(j=>{
-            const p=pct([j.framecad,j.detailer,j.permit,j.rfy,j.gfc,j.boq]);
-            const col=j.status==='DELAYED'?'#e84040':j.status==='ON TRACK'?'#2ec27e':'#f0a000';
-            return `<tr class="clickable" onclick="showJobDetail(${j.id})">
-              <td><div class="pn" title="${j.name}">${j.name}</div></td>
-              <td>${teamBadge(j.team)}</td>
-              <td>${statusBadge(j.status)}</td>
-              <td>${progBar(p,col)}</td>
-            </tr>`;
-          }).join('')}
-          </tbody>
-        </table>
+        <table class="tbl"><thead><tr><th>Project</th><th>Team</th><th>Status</th><th>Progress</th></tr></thead><tbody>
+        ${jobs.slice(0,7).map(j=>{
+          const p=pct([j.framecad,j.detailer,j.permit,j.rfy,j.gfc,j.boq]);
+          const col=j.status==='DELAYED'?'#e84040':j.status==='ON TRACK'?'#2ec27e':'#f0a000';
+          return `<tr class="clickable" onclick="openJobPanel(${j.id})">
+            <td><div class="pn" title="${j.name}">${j.name}</div></td>
+            <td>${teamBadge(j.team)}</td><td>${statusBadge(j.status)}</td><td>${progBar(p,col)}</td>
+          </tr>`;
+        }).join('')}
+        </tbody></table>
       </div>
       <div class="panel">
         <div class="panel-header"><div class="panel-title">RESOURCE LOAD</div></div>
         <div style="padding:10px 14px">
           ${MEMBERS.slice(0,8).map(m=>{
-            const avail=1-(m.used/m.limit);
             const over=m.used>m.limit;
-            const col=over?'#e84040':avail<0.3?'#f0a000':'#2ec27e';
+            const col=over?'#e84040':m.used/m.limit>0.7?'#f0a000':'#2ec27e';
             return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
               <div class="av av-sm" style="background:${m.color}20;color:${m.color};border:1px solid ${m.color}40">${m.id}</div>
               <div style="flex:1;min-width:0">
@@ -677,23 +602,94 @@ function renderDashboard(){
     </div>`;
 }
 
-// ─── JOB STAGE ───
+// ═══════════════ INLINE PCT INPUT HELPERS ═══════════════
+function pctColor(v){ return v>=100?'#2ec27e':v>0?'#f0a000':'var(--steel)'; }
+function pctColorBlue(v){ return v>=100?'#2ec27e':v>0?'#4aa3f5':'var(--steel)'; }
+
+function pctInput(jobId, field, val){
+  const col=pctColor(val);
+  return `<input class="pct-inline" type="number" min="0" max="100" value="${val||0}"
+    data-id="${jobId}" data-field="${field}" style="color:${col}"
+    onclick="event.stopPropagation()"
+    onkeydown="handlePctKey(event,this,'job')"
+    onblur="saveInlinePct(this,'job')"
+    oninput="this.style.color=pctColor(+this.value)"
+  />`;
+}
+function qPctInput(qId, field, val){
+  const col=pctColorBlue(val);
+  return `<input class="pct-inline" type="number" min="0" max="100" value="${val||0}"
+    data-id="${qId}" data-field="${field}" style="color:${col}"
+    onclick="event.stopPropagation()"
+    onkeydown="handlePctKey(event,this,'quote')"
+    onblur="saveInlinePct(this,'quote')"
+    oninput="this.style.color=pctColorBlue(+this.value)"
+  />`;
+}
+
+// Tab navigation across all .pct-inline in same row
+function handlePctKey(e, el, type){
+  if(e.key==='Enter'){ e.preventDefault(); saveInlinePct(el,type); el.blur(); return; }
+  if(e.key==='Tab'){
+    e.preventDefault();
+    saveInlinePct(el,type);
+    const row=el.closest('tr');
+    if(!row) return;
+    const all=[...row.querySelectorAll('.pct-inline')];
+    const idx=all.indexOf(el);
+    const next=e.shiftKey ? all[idx-1] : all[idx+1];
+    if(next){ next.focus(); next.select(); }
+  }
+}
+
+function saveInlinePct(el, type){
+  const id=parseInt(el.dataset.id);
+  const field=el.dataset.field;
+  const val=Math.min(100,Math.max(0,parseInt(el.value)||0));
+  el.value=val;
+  const list=type==='job'?jobs:quotes;
+  const item=list.find(x=>x.id===id);
+  if(!item) return;
+  const prev=item[field];
+  if(prev===val) return; // no change, skip API call
+  item[field]=val;
+  const endpoint=type==='job'?'jobs':'quotes';
+  apiPut(`/api/${endpoint}/${id}`, item)
+    .then(()=>{
+      // update progress bar in same row
+      const row=el.closest('tr');
+      if(row){
+        const fields=type==='job'?[item.framecad,item.detailer,item.permit,item.rfy,item.gfc,item.boq]:[item.ppt,item.fc,item.est];
+        const p=pct(fields);
+        const col=p>=80?'#2ec27e':p>=40?'#f0a000':type==='job'?'#e84040':'#4aa3f5';
+        const pb=row.querySelector('.pct-prog-bar');
+        const pt=row.querySelector('.pct-prog-txt');
+        if(pb){pb.style.width=p+'%';pb.style.background=col;}
+        if(pt) pt.textContent=p+'%';
+      }
+      // if panel is open for this job, refresh checklist
+      if(panelJobId===id && type==='job') renderPanelChecklist(item);
+      toast(`${field.toUpperCase()} → ${val}%`,'◈');
+    })
+    .catch(()=>{ item[field]=prev; el.value=prev; toast('Save failed','⚠'); });
+}
+
+// ═══════════════ JOB STAGE ═══════════════
 function renderJobs(){
   document.getElementById('main-content').innerHTML=`
-    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center">
-      <div class="section-row" style="margin-bottom:0;flex:1">
+    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;display:flex;gap:6px;flex-wrap:wrap">
         ${['','PRODUCTION','JOB'].map(s=>`<button class="btn btn-ghost btn-sm" onclick="filterJobs('${s}')">${s||'All'} (${s?jobs.filter(j=>j.stage===s).length:jobs.length})</button>`).join('')}
         ${['','ON TRACK','DELAYED','NOT STARTED'].map(s=>`<button class="btn btn-ghost btn-sm" onclick="filterJobsStatus('${s}')">${s||'All Status'}</button>`).join('')}
       </div>
       <button class="btn btn-amber btn-sm" onclick="openJobModal()">+ New Job</button>
     </div>
-    <div class="panel">
+    <div class="panel" style="overflow-x:auto">
       <table class="tbl" id="jobs-table">
         <thead><tr>
-          <th>JOB#</th><th style="min-width:220px">Project</th><th>Stage</th><th>Team</th>
-          <th>Person</th><th>Priority</th><th>Start</th><th>End</th>
-          <th>FrameCAD</th><th>Detailer</th><th>Permit</th><th>RFY</th><th>GFC</th><th>BOQ</th>
-          <th>%</th><th>Status</th><th></th>
+          <th>JOB#</th><th style="min-width:200px">Project</th><th>Stage</th><th>Team</th><th>Person</th><th>Priority</th>
+          <th>Start</th><th>End</th><th>FrameCAD</th><th>Detailer</th><th>Permit</th><th>RFY</th><th>GFC</th><th>BOQ</th>
+          <th style="min-width:90px">%</th><th>Status</th><th style="width:88px">Actions</th>
         </tr></thead>
         <tbody>${jobRows(jobs)}</tbody>
       </table>
@@ -704,24 +700,27 @@ function jobRows(list){
   return list.map(j=>{
     const p=pct([j.framecad,j.detailer,j.permit,j.rfy,j.gfc,j.boq]);
     const col=p>=80?'#2ec27e':p>=40?'#f0a000':'#e84040';
-    return `<tr class="clickable" onclick="showJobDetail(${j.id})">
+    return `<tr class="clickable" onclick="openJobPanel(${j.id})">
       <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--mist)">${j.num||'—'}</span></td>
-      <td><div class="pn" style="max-width:220px" title="${j.name}">${j.name}</div></td>
+      <td><div class="pn" style="max-width:200px" title="${j.name}">${j.name}</div></td>
       <td>${stageBadge(j.stage)}</td>
       <td>${teamBadge(j.team)}</td>
       <td><div style="display:flex;align-items:center;gap:5px">${av(j.person)}<span style="font-size:11px">${j.person||'—'}</span></div></td>
       <td>${priorityBadge(j.priority)}</td>
       <td style="font-size:11px;font-family:var(--font-mono);color:var(--mist)">${formatDate(j.start)}</td>
       <td style="font-size:11px;font-family:var(--font-mono);color:var(--mist)">${formatDate(j.end)}</td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.framecad>=100?'#2ec27e':j.framecad>0?'#f0a000':'var(--steel)'}">${j.framecad||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.detailer>=100?'#2ec27e':j.detailer>0?'#f0a000':'var(--steel)'}">${j.detailer||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.permit>=100?'#2ec27e':j.permit>0?'#f0a000':'var(--steel)'}">${j.permit||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.rfy>=100?'#2ec27e':j.rfy>0?'#f0a000':'var(--steel)'}">${j.rfy||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.gfc>=100?'#2ec27e':j.gfc>0?'#f0a000':'var(--steel)'}">${j.gfc||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${j.boq>=100?'#2ec27e':j.boq>0?'#f0a000':'var(--steel)'}">${j.boq||0}%</span></td>
+      <td>${pctInput(j.id,'framecad',j.framecad)}</td>
+      <td>${pctInput(j.id,'detailer',j.detailer)}</td>
+      <td>${pctInput(j.id,'permit',j.permit)}</td>
+      <td>${pctInput(j.id,'rfy',j.rfy)}</td>
+      <td>${pctInput(j.id,'gfc',j.gfc)}</td>
+      <td>${pctInput(j.id,'boq',j.boq)}</td>
       <td>${progBar(p,col)}</td>
       <td>${statusBadge(j.status)}</td>
-      <td><button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openEditJob(${j.id})" style="padding:2px 8px">✎</button></td>
+      <td class="row-actions-cell"><div class="row-actions" style="display:flex;gap:4px">
+        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openEditJob(${j.id})" style="padding:3px 9px;font-size:11px" title="Edit">✎</button>
+        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteJobInline(${j.id})" style="padding:3px 9px;font-size:11px" title="Delete">✕</button>
+      </div></td>
     </tr>`;
   }).join('');
 }
@@ -734,22 +733,28 @@ function filterJobsStatus(status){
   const list=status?jobs.filter(j=>j.status===status):jobs;
   document.querySelector('#jobs-table tbody').innerHTML=jobRows(list);
 }
+function deleteJobInline(id){
+  const j=jobs.find(x=>x.id===id);
+  if(!j||!confirm(`Delete "${j.name}"?\nThis cannot be undone.`)) return;
+  apiDel(`/api/jobs/${id}`).then(()=>{toast('Job deleted','✕');loadAll();}).catch(()=>toast('Delete failed','⚠'));
+}
 
-// ─── QUOTE STAGE ───
+// ═══════════════ QUOTE STAGE ═══════════════
 function renderQuotes(){
   document.getElementById('main-content').innerHTML=`
-    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center">
+    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap">
       <div style="flex:1;display:flex;gap:6px;flex-wrap:wrap">
         ${['N1','N2','N3'].map(t=>`<button class="btn btn-ghost btn-sm" onclick="filterQuotes('${t}')">${t} (${quotes.filter(q=>q.team===t).length})</button>`).join('')}
         <button class="btn btn-ghost btn-sm" onclick="filterQuotes('')">All (${quotes.length})</button>
       </div>
       <button class="btn btn-amber btn-sm" onclick="openQuoteModal()">+ New Quote</button>
     </div>
-    <div class="panel">
+    <div class="panel" style="overflow-x:auto">
       <table class="tbl" id="quote-table">
         <thead><tr>
-          <th>RFQ</th><th style="min-width:220px">Project</th><th>Team</th><th>Person</th>
-          <th>Priority</th><th>PPT</th><th>FrameCAD</th><th>Estimation</th><th>%</th><th>Status</th><th></th>
+          <th>RFQ</th><th style="min-width:200px">Project</th><th>Team</th><th>Person</th>
+          <th>Priority</th><th>PPT</th><th>FrameCAD</th><th>Estimation</th>
+          <th style="min-width:90px">%</th><th>Status</th><th style="width:88px">Actions</th>
         </tr></thead>
         <tbody>${quoteRows(quotes)}</tbody>
       </table>
@@ -760,18 +765,21 @@ function quoteRows(list){
   return list.map(q=>{
     const p=pct([q.ppt,q.fc,q.est]);
     const col=p>=80?'#2ec27e':p>=40?'#f0a000':'#4aa3f5';
-    return `<tr class="clickable" onclick="showQuoteDetail(${q.id})">
+    return `<tr class="clickable" onclick="openQuotePanel(${q.id})">
       <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--mist)">${q.rfq||'—'}</span></td>
-      <td><div class="pn" style="max-width:220px" title="${q.name}">${q.name}</div></td>
+      <td><div class="pn" style="max-width:200px" title="${q.name}">${q.name}</div></td>
       <td>${teamBadge(q.team)}</td>
       <td><div style="display:flex;align-items:center;gap:5px">${av(q.person)}<span style="font-size:11px">${q.person||'—'}</span></div></td>
       <td>${priorityBadge(q.priority)}</td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${q.ppt>=100?'#2ec27e':q.ppt>0?'#f0a000':'var(--steel)'}">${q.ppt||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${q.fc>=100?'#2ec27e':q.fc>0?'#f0a000':'var(--steel)'}">${q.fc||0}%</span></td>
-      <td><span style="font-size:11px;font-family:var(--font-mono);color:${q.est>=100?'#2ec27e':q.est>0?'#f0a000':'var(--steel)'}">${q.est||0}%</span></td>
+      <td>${qPctInput(q.id,'ppt',q.ppt)}</td>
+      <td>${qPctInput(q.id,'fc',q.fc)}</td>
+      <td>${qPctInput(q.id,'est',q.est)}</td>
       <td>${progBar(p,col)}</td>
       <td>${statusBadge(q.status)}</td>
-      <td><button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openEditQuote(${q.id})" style="padding:2px 8px">✎</button></td>
+      <td class="row-actions-cell"><div class="row-actions" style="display:flex;gap:4px">
+        <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openEditQuote(${q.id})" style="padding:3px 9px;font-size:11px" title="Edit">✎</button>
+        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteQuoteInline(${q.id})" style="padding:3px 9px;font-size:11px" title="Delete">✕</button>
+      </div></td>
     </tr>`;
   }).join('');
 }
@@ -779,43 +787,317 @@ function filterQuotes(team){
   const list=team?quotes.filter(q=>q.team===team):quotes;
   document.querySelector('#quote-table tbody').innerHTML=quoteRows(list);
 }
+function deleteQuoteInline(id){
+  const q=quotes.find(x=>x.id===id);
+  if(!q||!confirm(`Delete "${q.name}"?`)) return;
+  apiDel(`/api/quotes/${id}`).then(()=>{toast('Quote deleted','✕');loadAll();}).catch(()=>toast('Delete failed','⚠'));
+}
 
-// ─── CHANGE ORDERS ───
+// Simple quote detail (no side panel for quotes, use modal approach)
+function openQuotePanel(id){
+  const q=quotes.find(x=>x.id===id); if(!q) return;
+  // reuse job panel but for quote (overview only, no todos/comments for now)
+  panelJobId=null;
+  document.getElementById('jp-name').textContent=q.name;
+  document.getElementById('jp-badges').innerHTML=teamBadge(q.team)+priorityBadge(q.priority)+statusBadge(q.status);
+  // hide todo/comment tabs for quotes
+  document.querySelectorAll('.jp-tab')[1].style.display='none';
+  document.querySelectorAll('.jp-tab')[2].style.display='none';
+  jpTab('overview');
+  document.getElementById('jp-meta').innerHTML=`
+    <div class="detail-field"><label>Person</label><span>${q.person||'—'}</span></div>
+    <div class="detail-field"><label>RFQ #</label><span style="font-family:var(--font-mono)">${q.rfq||'—'}</span></div>
+    <div class="detail-field"><label>Start</label><span>${formatDate(q.start)}</span></div>
+    <div class="detail-field"><label>End</label><span>${formatDate(q.end)}</span></div>`;
+  // checklist for quote
+  const fields=[['PPT',q.ppt,'ppt'],['FrameCAD',q.fc,'fc'],['Estimation',q.est,'est']];
+  document.getElementById('jp-chklist').innerHTML=fields.map(([lbl,val,f])=>{
+    const col=val>=100?'#2ec27e':val>0?'#4aa3f5':'var(--steel)';
+    return `<div class="chk-card"><div class="chk-lbl">${lbl}</div>
+      <input class="chk-input" type="number" min="0" max="100" value="${val||0}" style="color:${col}"
+        data-id="${q.id}" data-field="${f}" data-type="quote"
+        oninput="this.style.color=pctColorBlue(+this.value);updateChkBar(this)"
+        onblur="saveChkInput(this)" onkeydown="if(event.key==='Enter')this.blur()"/>
+      <div class="chk-bar"><div class="chk-bar-fill" style="width:${val||0}%;background:${col}"></div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('jp-remarks').textContent=q.remarks||'';
+  document.getElementById('jp-remarks').dataset.jobId='';
+  document.getElementById('jp-remarks').dataset.type='quote';
+  document.getElementById('jp-remarks').dataset.qId=q.id;
+  document.getElementById('jp-delete').onclick=()=>{closeJobPanel();deleteQuoteInline(id);};
+  document.getElementById('jp-edit').onclick=()=>{closeJobPanel();openEditQuote(id);};
+  document.getElementById('jp-complete').textContent='→ Promote to Job';
+  document.getElementById('jp-complete').onclick=()=>{
+    const jobData={num:'',name:q.name,stage:'JOB',team:q.team,person:q.person,
+      priority:q.priority,start:q.start,end:q.end,rev:'',framecad:0,detailer:0,
+      permit:0,rfy:0,gfc:0,boq:0,status:'NOT STARTED',remarks:'Promoted from Quote'};
+    apiPost('/api/jobs',jobData).then(()=>apiDel(`/api/quotes/${id}`))
+      .then(()=>{closeJobPanel();toast('Promoted to Job','◈');loadAll();});
+  };
+  document.getElementById('job-panel-overlay').classList.add('open');
+}
+
+// ═══════════════ JOB SIDE PANEL ═══════════════
+function openJobPanel(id){
+  const j=jobs.find(x=>x.id===id); if(!j) return;
+  panelJobId=id;
+  // restore todo/comment tabs
+  document.querySelectorAll('.jp-tab').forEach(t=>t.style.display='');
+  jpTab('overview');
+  document.getElementById('jp-name').textContent=j.name;
+  document.getElementById('jp-badges').innerHTML=(j.num?`<span style="font-size:10px;font-family:var(--font-mono);color:var(--mist)">${j.num}</span>`:'')
+    +stageBadge(j.stage)+teamBadge(j.team)+priorityBadge(j.priority)+statusBadge(j.status);
+  document.getElementById('jp-meta').innerHTML=`
+    <div class="detail-field"><label>Person</label><span>${j.person||'—'}</span></div>
+    <div class="detail-field"><label>Revision</label><span style="font-family:var(--font-mono)">${j.rev||'—'}</span></div>
+    <div class="detail-field"><label>Start</label><span>${formatDate(j.start)}</span></div>
+    <div class="detail-field"><label>End</label><span>${formatDate(j.end)}</span></div>`;
+  renderPanelChecklist(j);
+  // remarks (contenteditable)
+  const remarksEl=document.getElementById('jp-remarks');
+  remarksEl.textContent=j.remarks||'';
+  remarksEl.dataset.jobId=id;
+  remarksEl.dataset.type='job';
+  remarksEl.onblur=()=>saveRemarks(remarksEl,j);
+  // footer buttons
+  document.getElementById('jp-delete').onclick=()=>{
+    if(!confirm(`Delete "${j.name}"?`)) return;
+    apiDel(`/api/jobs/${id}`).then(()=>{closeJobPanel();toast('Deleted','✕');loadAll();});
+  };
+  document.getElementById('jp-edit').onclick=()=>{closeJobPanel();openEditJob(id);};
+  document.getElementById('jp-complete').textContent='Mark Complete';
+  document.getElementById('jp-complete').onclick=()=>{
+    const cid='PN-26-'+(completed.length+10).toString().padStart(3,'0');
+    const today=new Date().toISOString().split('T')[0];
+    apiPost('/api/completed',{id:cid,name:j.name,stage:j.stage,team:j.team,hold:0,completed_date:today})
+      .then(()=>apiDel(`/api/jobs/${id}`))
+      .then(()=>{closeJobPanel();toast('Marked Complete ✓','✓');loadAll();});
+  };
+  document.getElementById('job-panel-overlay').classList.add('open');
+  // load todos and comments
+  loadTodos(id);
+  loadComments(id);
+}
+
+function closeJobPanel(){
+  document.getElementById('job-panel-overlay').classList.remove('open');
+  panelJobId=null;
+}
+
+function jpTab(name){
+  document.querySelectorAll('.jp-tab').forEach((t,i)=>{
+    const names=['overview','todo','comments'];
+    t.classList.toggle('active',names[i]===name);
+  });
+  document.querySelectorAll('.jp-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('jp-'+name).classList.add('active');
+}
+
+function renderPanelChecklist(j){
+  const fields=[['FrameCAD',j.framecad,'framecad'],['Detailer',j.detailer,'detailer'],
+    ['City Permit',j.permit,'permit'],['RFY',j.rfy,'rfy'],['GFC',j.gfc,'gfc'],['BOQ',j.boq,'boq']];
+  document.getElementById('jp-chklist').innerHTML=fields.map(([lbl,val,f])=>{
+    const col=pctColor(val);
+    return `<div class="chk-card"><div class="chk-lbl">${lbl}</div>
+      <input class="chk-input" type="number" min="0" max="100" value="${val||0}" style="color:${col}"
+        data-id="${j.id}" data-field="${f}" data-type="job"
+        oninput="this.style.color=pctColor(+this.value);updateChkBar(this)"
+        onblur="saveChkInput(this)" onkeydown="if(event.key==='Enter')this.blur()"/>
+      <div class="chk-bar"><div class="chk-bar-fill" style="width:${val||0}%;background:${col}"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function updateChkBar(el){
+  const v=Math.min(100,Math.max(0,parseInt(el.value)||0));
+  const col=el.dataset.type==='quote'?pctColorBlue(v):pctColor(v);
+  const bar=el.closest('.chk-card').querySelector('.chk-bar-fill');
+  if(bar){bar.style.width=v+'%';bar.style.background=col;}
+}
+
+function saveChkInput(el){
+  const id=parseInt(el.dataset.id);
+  const field=el.dataset.field;
+  const type=el.dataset.type||'job';
+  const val=Math.min(100,Math.max(0,parseInt(el.value)||0));
+  el.value=val;
+  updateChkBar(el);
+  const list=type==='job'?jobs:quotes;
+  const item=list.find(x=>x.id===id);
+  if(!item||item[field]===val) return;
+  item[field]=val;
+  const endpoint=type==='job'?'jobs':'quotes';
+  apiPut(`/api/${endpoint}/${id}`,item)
+    .then(()=>{ toast(`${field.toUpperCase()} → ${val}%`,'◈'); refreshRowInTable(id,type,item); })
+    .catch(()=>toast('Save failed','⚠'));
+}
+
+function refreshRowInTable(id, type, item){
+  // update the inline pct input in the table row if visible
+  const table=document.querySelector(type==='job'?'#jobs-table':'#quote-table');
+  if(!table) return;
+  const rows=[...table.querySelectorAll('tbody tr')];
+  rows.forEach(row=>{
+    const inputs=[...row.querySelectorAll('.pct-inline')];
+    if(!inputs.length) return;
+    if(parseInt(inputs[0].dataset.id)!==id) return;
+    inputs.forEach(inp=>{
+      inp.value=item[inp.dataset.field]||0;
+      const c=type==='job'?pctColor(+inp.value):pctColorBlue(+inp.value);
+      inp.style.color=c;
+    });
+    const fields=type==='job'?[item.framecad,item.detailer,item.permit,item.rfy,item.gfc,item.boq]:[item.ppt,item.fc,item.est];
+    const p=pct(fields);
+    const col=p>=80?'#2ec27e':p>=40?'#f0a000':type==='job'?'#e84040':'#4aa3f5';
+    const pb=row.querySelector('.pct-prog-bar');
+    const pt=row.querySelector('.pct-prog-txt');
+    if(pb){pb.style.width=p+'%';pb.style.background=col;}
+    if(pt) pt.textContent=p+'%';
+  });
+}
+
+// save remarks (debounced)
+let remarkTimer=null;
+function saveRemarks(el, j){
+  clearTimeout(remarkTimer);
+  remarkTimer=setTimeout(()=>{
+    const text=el.textContent.trim();
+    if(text===j.remarks) return;
+    j.remarks=text;
+    apiPut(`/api/jobs/${j.id}`,j).then(()=>toast('Remarks saved','✎')).catch(()=>toast('Save failed','⚠'));
+  },600);
+}
+
+// ═══════════════ TODOS ═══════════════
+let currentTodos=[];
+
+async function loadTodos(jobId){
+  try{
+    currentTodos=await apiGet(`/api/job_todos/${jobId}`);
+    renderTodos();
+  }catch(e){ document.getElementById('todo-list').innerHTML='<div class="todo-empty">Could not load tasks</div>'; }
+}
+
+function renderTodos(){
+  const el=document.getElementById('todo-list');
+  if(!currentTodos.length){el.innerHTML='<div class="todo-empty">No tasks yet. Add one above.</div>';return;}
+  el.innerHTML=currentTodos.map(t=>`
+    <div class="todo-item ${t.done?'done-item':''}" id="todo-${t.id}">
+      <input type="checkbox" class="todo-cb" ${t.done?'checked':''} onchange="toggleTodo(${t.id},this.checked)"/>
+      <div>
+        <div class="todo-text">${escHtml(t.text)}</div>
+        <div class="todo-meta">${t.created||''}</div>
+      </div>
+      <button class="todo-del" onclick="deleteTodo(${t.id})" title="Delete">✕</button>
+    </div>`).join('');
+}
+
+async function addTodo(){
+  const inp=document.getElementById('todo-input');
+  const text=inp.value.trim();
+  if(!text||!panelJobId) return;
+  try{
+    const r=await apiPost('/api/job_todos',{job_id:panelJobId,text});
+    currentTodos.push({id:r.id,job_id:panelJobId,text,done:0,created:r.created||''});
+    renderTodos();
+    inp.value='';
+    toast('Task added','☑');
+  }catch(e){toast('Failed','⚠');}
+}
+
+async function toggleTodo(id, done){
+  try{
+    await apiPut(`/api/job_todos/${id}`,{done:done?1:0});
+    const t=currentTodos.find(x=>x.id===id);
+    if(t) t.done=done?1:0;
+    renderTodos();
+  }catch(e){toast('Failed','⚠');}
+}
+
+async function deleteTodo(id){
+  try{
+    await apiDel(`/api/job_todos/${id}`);
+    currentTodos=currentTodos.filter(x=>x.id!==id);
+    renderTodos();
+  }catch(e){toast('Failed','⚠');}
+}
+
+// ═══════════════ COMMENTS ═══════════════
+let currentComments=[];
+
+async function loadComments(jobId){
+  try{
+    currentComments=await apiGet(`/api/job_comments/${jobId}`);
+    renderComments();
+  }catch(e){ document.getElementById('comment-list').innerHTML='<div class="todo-empty">Could not load comments</div>'; }
+}
+
+function renderComments(){
+  const el=document.getElementById('comment-list');
+  if(!currentComments.length){el.innerHTML='<div class="todo-empty">No comments yet.</div>';return;}
+  el.innerHTML=currentComments.map(c=>`
+    <div class="comment-item">
+      <div class="comment-header">
+        <span class="comment-author">👤 ${escHtml(c.author)}</span>
+        <span class="comment-time">${c.created||''}</span>
+        <button class="comment-del" onclick="deleteComment(${c.id})" title="Delete">✕</button>
+      </div>
+      <div class="comment-text">${escHtml(c.text)}</div>
+    </div>`).join('');
+}
+
+async function addComment(){
+  const inp=document.getElementById('comment-input');
+  const text=inp.value.trim();
+  if(!text||!panelJobId) return;
+  try{
+    const r=await apiPost('/api/job_comments',{job_id:panelJobId,text,author:'User'});
+    currentComments.unshift({id:r.id,job_id:panelJobId,author:'User',text,created:r.created||''});
+    renderComments();
+    inp.value='';
+    toast('Comment posted','💬');
+  }catch(e){toast('Failed','⚠');}
+}
+
+async function deleteComment(id){
+  try{
+    await apiDel(`/api/job_comments/${id}`);
+    currentComments=currentComments.filter(x=>x.id!==id);
+    renderComments();
+  }catch(e){toast('Failed','⚠');}
+}
+
+function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ═══════════════ CHANGE ORDERS ═══════════════
 function renderCO(){
   document.getElementById('main-content').innerHTML=`
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
       <button class="btn btn-amber btn-sm" onclick="openCOModal()">+ New Change Order</button>
     </div>
-    ${cos.length===0?`<div class="panel"><div style="padding:40px;text-align:center;color:var(--mist);font-family:var(--font-mono)">No change orders. Click + to add one.</div></div>`:
-    `<div class="panel"><table class="tbl"><thead><tr><th>Job</th><th>Project</th><th>Team</th><th>Status</th><th></th></tr></thead>
-    <tbody>${cos.map(c=>`<tr><td>${c.num||'—'}</td><td class="pn">${c.name}</td><td>${teamBadge(c.team)}</td><td>${statusBadge(c.status)}</td>
-    <td><button class="btn btn-danger btn-sm" onclick="deleteCO(${c.id})">✕</button></td></tr>`).join('')}</tbody></table></div>`}`;
+    ${cos.length===0?`<div class="panel"><div style="padding:40px;text-align:center;color:var(--mist);font-family:var(--font-mono)">No change orders.</div></div>`:
+    `<div class="panel"><table class="tbl"><thead><tr><th>Job#</th><th>Project</th><th>Team</th><th>Status</th><th></th></tr></thead>
+    <tbody>${cos.map(c=>`<tr>
+      <td style="font-family:var(--font-mono);color:var(--mist)">${c.num||'—'}</td>
+      <td class="pn">${c.name}</td><td>${teamBadge(c.team)}</td><td>${statusBadge(c.status)}</td>
+      <td><button class="btn btn-danger btn-sm" onclick="apiDel('/api/change_orders/${c.id}').then(()=>{toast('Deleted','✕');loadAll()})">✕</button></td>
+    </tr>`).join('')}</tbody></table></div>`}`;
 }
-
 function openCOModal(){
   const name=prompt('Project Name (Change Order):');
-  if(!name)return;
+  if(!name) return;
   apiPost('/api/change_orders',{name,team:'N2',status:'NOT STARTED'})
-    .then(()=>{ toast('Change Order added','△'); loadAll(); })
-    .catch(()=>toast('Failed','⚠'));
-}
-function deleteCO(id){
-  apiDel(`/api/change_orders/${id}`)
-    .then(()=>{ toast('Deleted','✕'); loadAll(); })
-    .catch(()=>toast('Failed','⚠'));
+    .then(()=>{toast('Change Order added','△');loadAll();}).catch(()=>toast('Failed','⚠'));
 }
 
-function deleteMailTask(id){
-  apiDel(`/api/mail_tasks/${id}`)
-    .then(()=>{ toast('Removed','✕'); loadAll(); })
-    .catch(()=>toast('Failed','⚠'));
-}
+// ═══════════════ MAIL TASKS ═══════════════
 function renderMailTask(){
   document.getElementById('main-content').innerHTML=`
     <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
       <button class="btn btn-amber btn-sm" onclick="openMailTaskModal()">+ Mail Task</button>
     </div>
-    <div class="panel">
+    <div class="panel" style="overflow-x:auto">
       <table class="tbl">
         <thead><tr><th>#</th><th style="min-width:200px">Project</th><th>Stage</th><th>Permit</th><th>Remarks</th><th>Struct Remarks</th><th>Assigned</th><th></th></tr></thead>
         <tbody>
@@ -823,19 +1105,22 @@ function renderMailTask(){
             <td style="font-family:var(--font-mono);color:var(--mist)">${i+1}</td>
             <td><div class="pn" title="${m.name}">${m.name}</div></td>
             <td>${stageBadge(m.stage)}</td>
-            <td>${progBar(m.permit||0,'#4aa3f5')}</td>
+            <td><div style="display:flex;align-items:center;gap:6px;min-width:80px">
+              <div class="prog-wrap" style="width:50px"><div class="prog-fill" style="width:${m.permit||0}%;background:#4aa3f5"></div></div>
+              <span style="font-size:10px;font-family:var(--font-mono);color:var(--mist)">${m.permit||0}%</span>
+            </div></td>
             <td style="font-size:11px;color:var(--fog);max-width:160px;white-space:normal;line-height:1.4">${m.remarks||'—'}</td>
             <td style="font-size:11px;color:var(--fog);max-width:140px;white-space:normal;line-height:1.4">${m.struct||'—'}</td>
             <td><div style="display:flex;gap:2px">${(m.assigned||[]).map(a=>av(a)).join('')}</div></td>
-            <td><button class="btn btn-danger btn-sm" onclick="deleteMailTask(${m.id})" style="padding:2px 8px">✕</button></td>
+            <td><button class="btn btn-danger btn-sm" onclick="apiDel('/api/mail_tasks/${m.id}').then(()=>{toast('Removed','✕');loadAll()})">✕</button></td>
           </tr>`).join('')}
         </tbody>
       </table>
     </div>`;
 }
-// ─── TEAM VIEW ───
-let editingMemberId = null;
-let editingTeamKey = null;
+
+// ═══════════════ TEAM ═══════════════
+let editingMemberIdLocal=null, editingTeamKeyLocal=null;
 
 function renderTeam(){
   const depts=['Structural Design','FrameCAD','Detailing'];
@@ -843,9 +1128,7 @@ function renderTeam(){
     <div style="margin-bottom:18px">
       <div class="section-row">
         <div class="section-head">TEAM STRUCTURE</div>
-        <div style="margin-left:auto;display:flex;gap:8px">
-          <button class="btn btn-ghost btn-sm" onclick="openAddMember()">+ Add Member</button>
-        </div>
+        <div style="margin-left:auto"><button class="btn btn-ghost btn-sm" onclick="openAddMember()">+ Add Member</button></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
         ${Object.entries(TEAMS).map(([key,t])=>`
@@ -857,9 +1140,8 @@ function renderTeam(){
             <div style="padding:10px 14px;font-size:11px;color:var(--fog)">
               <div style="margin-bottom:4px"><span style="color:var(--mist)">SPOC: </span>${t.spoc}</div>
               <div style="margin-bottom:6px"><span style="color:var(--mist)">Focus: </span>${t.focus}</div>
-              <div style="color:var(--mist);margin-bottom:4px;font-size:9px;letter-spacing:1px">MEMBERS</div>
               <div style="display:flex;flex-wrap:wrap;gap:4px">
-                ${t.members.map(m=>{const mb=MEMBERS.find(x=>x.name===m||x.name.includes(m));return mb?`<div style="display:flex;align-items:center;gap:4px;background:var(--ink3);padding:3px 7px;border-radius:3px;font-size:10px;font-family:var(--font-mono)">${av(mb.id,'sm')}${mb.name.split(' ')[0]}</div>`:''}).join('')}
+                ${t.members.map(m=>{const mb=MEMBERS.find(x=>x.name===m);return mb?`<div style="display:flex;align-items:center;gap:4px;background:var(--ink3);padding:3px 7px;border-radius:3px;font-size:10px;font-family:var(--font-mono)">${av(mb.id,'sm')}${mb.name.split(' ')[0]}</div>`:''}).join('')}
               </div>
             </div>
           </div>`).join('')}
@@ -869,50 +1151,37 @@ function renderTeam(){
     ${depts.map(dept=>`
       <div style="margin-bottom:16px">
         <div style="font-size:10px;font-family:var(--font-mono);color:var(--mist);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">${dept}</div>
-        <div class="team-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+        <div class="team-grid">
           ${MEMBERS.filter(m=>m.dept===dept).map(m=>{
-            const avail=Math.max(0,1-(m.used/m.limit));
             const over=m.used>m.limit;
-            const col=over?'#e84040':avail<0.3?'#f0a000':'#2ec27e';
-            return `<div class="member-card" style="position:relative" onclick="showMemberDetail('${m.id}')">
-              <div style="position:absolute;top:8px;right:8px;display:flex;gap:4px;z-index:2">
+            const col=over?'#e84040':m.used/m.limit>0.7?'#f0a000':'#2ec27e';
+            return `<div class="member-card" onclick="void(0)">
+              <div style="position:absolute;top:8px;right:8px;display:flex;gap:4px">
                 <button class="btn btn-ghost btn-sm" style="padding:2px 7px;font-size:10px" onclick="event.stopPropagation();openEditMember('${m.id}')">✎</button>
                 <button class="btn btn-danger btn-sm" style="padding:2px 7px;font-size:10px" onclick="event.stopPropagation();deleteMember('${m.id}')">✕</button>
               </div>
               <div class="member-top">
                 <div class="av av-md" style="background:${m.color}20;color:${m.color};border:1px solid ${m.color}40">${m.id}</div>
-                <div>
-                  <div class="member-name">${m.name}</div>
-                  <div class="member-role">${m.role}</div>
-                </div>
+                <div><div class="member-name">${m.name}</div><div class="member-role">${m.role}</div></div>
               </div>
-              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-                <div class="load-stat">
-                  <div class="n" style="color:${col}">${m.used}</div>
-                  <div class="l">Used</div>
-                </div>
-                <div class="load-stat">
-                  <div class="n">${m.limit}</div>
-                  <div class="l">Limit</div>
-                </div>
-                <div class="load-stat">
-                  <div class="n" style="color:${col};font-size:16px">${over?'▲':Math.round(avail*100)+'%'}</div>
-                  <div class="l">${over?'OVER':'Free'}</div>
-                </div>
+              <div style="display:flex;gap:10px;margin-bottom:8px">
+                <div class="load-stat"><div class="n" style="color:${col}">${m.used}</div><div class="l">Used</div></div>
+                <div class="load-stat"><div class="n">${m.limit}</div><div class="l">Limit</div></div>
+                <div class="load-stat"><div class="n" style="color:${col};font-size:16px">${over?'▲':Math.round((1-m.used/m.limit)*100)+'%'}</div><div class="l">${over?'OVER':'Free'}</div></div>
               </div>
               <div class="prog-wrap"><div class="prog-fill" style="width:${Math.min(m.used/m.limit*100,100)}%;background:${col}"></div></div>
-              ${over?`<div style="font-size:9px;color:#e84040;font-family:var(--font-mono);margin-top:4px">⚠ OVERLOADED by ${m.used-m.limit} tasks</div>`:''}
-              <div style="margin-top:8px;display:flex;align-items:center;gap:4px">
-                <input type="number" min="0" max="${m.limit+10}" value="${m.used}" title="Edit used tasks"
+              <div style="margin-top:10px;display:flex;align-items:center;gap:6px">
+                <span style="font-size:9px;color:var(--mist);font-family:var(--font-mono)">Used</span>
+                <input type="number" min="0" max="${m.limit+10}" value="${m.used}"
                   style="width:44px;background:var(--ink);border:1px solid var(--rule2);border-radius:3px;color:var(--white);font-size:11px;padding:2px 5px;font-family:var(--font-mono);text-align:center"
                   onclick="event.stopPropagation()"
                   onchange="event.stopPropagation();updateCapacity('${m.id}','used',this.value)"/>
-                <span style="font-size:10px;color:var(--mist)">/</span>
-                <input type="number" min="1" max="30" value="${m.limit}" title="Edit limit"
+                <span style="font-size:9px;color:var(--mist)">/</span>
+                <input type="number" min="1" max="30" value="${m.limit}"
                   style="width:44px;background:var(--ink);border:1px solid var(--rule2);border-radius:3px;color:var(--white);font-size:11px;padding:2px 5px;font-family:var(--font-mono);text-align:center"
                   onclick="event.stopPropagation()"
                   onchange="event.stopPropagation();updateCapacity('${m.id}','limit',this.value)"/>
-                <span style="font-size:9px;color:var(--mist);font-family:var(--font-mono)">tasks</span>
+                <span style="font-size:9px;color:var(--mist)">tasks</span>
               </div>
             </div>`;
           }).join('')}
@@ -925,22 +1194,122 @@ function renderTeam(){
       </div>`).join('')}`;
 }
 
-function updateCapacity(id, field, val){
-  const m=MEMBERS.find(x=>x.id===id);
-  if(!m)return;
-  const updated={...m, lim:m.limit, [field === 'limit' ? 'lim' : field]: Math.max(0,parseInt(val)||0)};
-  apiPut(`/api/members/${id}`, updated)
-    .then(()=>{ loadAll(); toast(`${field==='used'?'Used':'Limit'} updated`,'◈'); })
-    .catch(()=>toast('Update failed','⚠'));
+function updateCapacity(id,field,val){
+  const m=MEMBERS.find(x=>x.id===id); if(!m) return;
+  const updated={...m,lim:m.limit,[field==='limit'?'lim':field]:Math.max(0,parseInt(val)||0)};
+  apiPut(`/api/members/${id}`,updated)
+    .then(()=>{loadAll();toast(`${field} updated`,'◈');}).catch(()=>toast('Update failed','⚠'));
 }
 
-// ─── MEMBER CRUD ───
+// ═══════════════ TIMELINE ═══════════════
+function renderTimeline(){
+  const BASE_DATE = new Date('2026-01-01');
+  const TOTAL_DAYS = 16 * 7; // 16 weeks
+  const weeks=[];
+  for(let i=0;i<16;i++){const d=new Date(BASE_DATE);d.setDate(d.getDate()+i*7);weeks.push(`W${i+1} ${d.getMonth()+1}/${d.getDate()}`);}
+  const barColors={'N1':'#4aa3f5','N2':'#f0a000','N3':'#a78bfa'};
+
+  function dateToPct(dateStr){
+    if(!dateStr) return null;
+    try{
+      const d=new Date(dateStr+'T00:00:00');
+      const diff=Math.round((d-BASE_DATE)/(1000*60*60*24));
+      return Math.max(0,Math.min(100, diff/TOTAL_DAYS*100));
+    }catch{return null;}
+  }
+
+  const jobsWithDates = jobs.filter(j=>j.start&&j.end).slice(0,14);
+  const jobsNoDates   = jobs.filter(j=>!j.start||!j.end).slice(0,14-jobsWithDates.length);
+  let fallbackOffset=0;
+  const placed = [
+    ...jobsWithDates.map(j=>({...j,
+      _left:dateToPct(j.start)??0,
+      _width:Math.max(4,(dateToPct(j.end)??0)-(dateToPct(j.start)??0))})),
+    ...jobsNoDates.map((j,i)=>({...j,
+      _left:Math.min(i*6,80),
+      _width:14}))
+  ];
+
+  document.getElementById('main-content').innerHTML=`
+    <div class="panel tl-wrap">
+      <div class="tl-hd">
+        <div class="tl-name-hd">Project</div>
+        <div style="display:flex;flex:1">${weeks.map(w=>`<div class="tl-week-hd">${w}</div>`).join('')}</div>
+      </div>
+      ${placed.map(j=>{
+        const col=barColors[j.team]||'#888';
+        return `<div class="tl-row" onclick="openJobPanel(${j.id})" style="cursor:pointer">
+          <div class="tl-row-name">${teamBadge(j.team)}<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">${j.name}</span></div>
+          <div class="tl-bar-area">
+            <div class="tl-bar" style="left:${j._left.toFixed(1)}%;width:${j._width.toFixed(1)}%;background:${col};color:#0a0c0f" title="${j.name}${j.start?' | '+formatDate(j.start)+' → '+formatDate(j.end):''}">
+              ${j.name.length>18?j.name.substring(0,16)+'…':j.name}
+            </div>
+          </div>
+        </div>`;
+      }).join('')}
+      ${placed.length===0?`<div style="padding:30px;text-align:center;color:var(--mist);font-family:var(--font-mono);font-size:12px">No jobs with dates to display. Add start/end dates to jobs.</div>`:''}
+    </div>`;
+}
+
+// ═══════════════ COMPLETED ═══════════════
+function renderCompleted(){
+  document.getElementById('main-content').innerHTML=`
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">COMPLETED (${completed.length})</div></div>
+      <table class="tbl"><thead><tr><th>Job#</th><th>Project</th><th>Stage</th><th>Team</th><th>Status</th><th style="width:200px">Actions</th></tr></thead>
+      <tbody>${completed.map(c=>`<tr>
+        <td style="font-family:var(--font-mono);font-size:10px;color:var(--mist)">${c.id}</td>
+        <td><div class="pn" title="${c.name}">${c.name}</div></td>
+        <td>${stageBadge(c.stage)}</td>
+        <td>${teamBadge(c.team)}</td>
+        <td>${c.hold?'<span class="badge" style="background:rgba(240,160,0,.15);color:#f0a000;border:1px solid rgba(240,160,0,.3)">⏸ ON HOLD</span>':'<span class="badge badge-complete">✓ Done</span>'}</td>
+        <td>
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            <button class="btn btn-ghost btn-sm" onclick="completedMoveToJob('${c.id}')" title="Move to Job Stage" style="font-size:10px;padding:3px 8px;color:var(--amber);border-color:rgba(240,160,0,.3)">→ Job Stage</button>
+            <button class="btn btn-ghost btn-sm" onclick="completedToggleHold('${c.id}',${c.hold?1:0})" title="${c.hold?'Remove Hold':'Put on Hold'}" style="font-size:10px;padding:3px 8px;color:${c.hold?'#2ec27e':'#f0a000'};border-color:${c.hold?'rgba(46,194,126,.3)':'rgba(240,160,0,.3)'}">
+              ${c.hold?'▶ Unhold':'⏸ Hold'}
+            </button>
+            <button class="btn btn-danger btn-sm" onclick="completedDelete('${c.id}')" title="Delete" style="font-size:10px;padding:3px 8px">✕ Delete</button>
+          </div>
+        </td>
+      </tr>`).join('')}</tbody></table>
+    </div>`;
+}
+
+function completedDelete(id){
+  const c=completed.find(x=>x.id===id);
+  if(!c||!confirm(`Permanently delete "${c.name}"?\nThis cannot be undone.`)) return;
+  apiDel(`/api/completed/${id}`)
+    .then(()=>{toast('Deleted','✕');loadAll();})
+    .catch(()=>toast('Delete failed','⚠'));
+}
+
+function completedMoveToJob(id){
+  const c=completed.find(x=>x.id===id);
+  if(!c||!confirm(`Move "${c.name}" back to Job Stage?`)) return;
+  const jobData={num:c.id,name:c.name,stage:c.stage||'JOB',team:c.team,person:'',
+    priority:'',start:'',end:'',rev:'',framecad:0,detailer:0,
+    permit:0,rfy:0,gfc:0,boq:0,status:'NOT STARTED',remarks:'Restored from Completed'};
+  apiPost('/api/jobs',jobData)
+    .then(()=>apiDel(`/api/completed/${id}`))
+    .then(()=>{toast('Moved to Job Stage','◈');loadAll();nav('jobs');})
+    .catch(()=>toast('Failed','⚠'));
+}
+
+function completedToggleHold(id, currentHold){
+  const c=completed.find(x=>x.id===id); if(!c) return;
+  const newHold=currentHold?0:1;
+  apiPut(`/api/completed/${id}`,{hold:newHold})
+    .then(()=>{c.hold=newHold;toast(newHold?'Marked as On Hold ⏸':'Hold removed ▶','◈');renderCompleted();})
+    .catch(()=>toast('Failed','⚠'));
+}
+
+// ═══════════════ MEMBER / TEAM CRUD ═══════════════
 function openAddMember(dept=''){
   editingMemberId=null;
   document.getElementById('mm2-title').textContent='ADD MEMBER';
-  document.getElementById('mm2-name').value='';
+  ['mm2-name','mm2-role'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('mm2-id').value='';
-  document.getElementById('mm2-role').value='';
   document.getElementById('mm2-dept').value=dept||'Structural Design';
   document.getElementById('mm2-limit').value=5;
   document.getElementById('mm2-used').value=0;
@@ -948,14 +1317,10 @@ function openAddMember(dept=''){
   document.getElementById('mm2-team').value='';
   openModal('member-modal');
 }
-
-function openAddMemberInDept(dept){
-  openAddMember(dept);
-}
+function openAddMemberInDept(dept){ openAddMember(dept); }
 
 function openEditMember(id){
-  const m=MEMBERS.find(x=>x.id===id);
-  if(!m)return;
+  const m=MEMBERS.find(x=>x.id===id); if(!m) return;
   editingMemberId=id;
   document.getElementById('mm2-title').textContent='EDIT MEMBER';
   document.getElementById('mm2-name').value=m.name;
@@ -965,8 +1330,7 @@ function openEditMember(id){
   document.getElementById('mm2-limit').value=m.limit;
   document.getElementById('mm2-used').value=m.used;
   document.getElementById('mm2-color').value=m.color||'#4aa3f5';
-  // find which team this member belongs to
-  const teamKey=Object.keys(TEAMS).find(k=>TEAMS[k].members.some(mn=>mn===m.name||mn.includes(m.name.split(' ')[0])))||'';
+  const teamKey=Object.keys(TEAMS).find(k=>TEAMS[k].members.some(mn=>mn===m.name))||'';
   document.getElementById('mm2-team').value=teamKey;
   openModal('member-modal');
 }
@@ -975,35 +1339,27 @@ function saveMember(){
   const name=document.getElementById('mm2-name').value.trim();
   const mid=document.getElementById('mm2-id').value.trim().toUpperCase();
   if(!name||!mid){toast('Name and ID required','⚠');return;}
-  const data={
-    id:mid, name,
-    role:document.getElementById('mm2-role').value.trim()||'Engineer',
+  const data={id:mid,name,role:document.getElementById('mm2-role').value.trim()||'Engineer',
     dept:document.getElementById('mm2-dept').value,
     lim:parseInt(document.getElementById('mm2-limit').value)||5,
     used:parseInt(document.getElementById('mm2-used').value)||0,
     color:document.getElementById('mm2-color').value,
-    team:document.getElementById('mm2-team').value,
-  };
+    team:document.getElementById('mm2-team').value};
   closeModal('member-modal');
-  const req = editingMemberId
-    ? apiPut(`/api/members/${editingMemberId}`, data).then(()=>toast('Member updated','✎'))
-    : apiPost('/api/members', data).then(()=>toast('Member added','◉'));
+  const req=editingMemberId
+    ?apiPut(`/api/members/${editingMemberId}`,data).then(()=>toast('Member updated','✎'))
+    :apiPost('/api/members',data).then(()=>toast('Member added','◉'));
   req.then(()=>loadAll()).catch(()=>toast('Save failed','⚠'));
 }
 
 function deleteMember(id){
-  const m=MEMBERS.find(x=>x.id===id);
-  if(!m)return;
-  if(!confirm(`Delete ${m.name}? This cannot be undone.`))return;
-  apiDel(`/api/members/${id}`)
-    .then(()=>{ toast('Member removed','✕'); loadAll(); })
-    .catch(()=>toast('Delete failed','⚠'));
+  const m=MEMBERS.find(x=>x.id===id); if(!m) return;
+  if(!confirm(`Delete ${m.name}?`)) return;
+  apiDel(`/api/members/${id}`).then(()=>{toast('Removed','✕');loadAll();}).catch(()=>toast('Failed','⚠'));
 }
 
-// ─── TEAM CRUD ───
 function openEditTeam(key){
-  const t=TEAMS[key];
-  if(!t)return;
+  const t=TEAMS[key]; if(!t) return;
   editingTeamKey=key;
   document.getElementById('tm2-title').textContent=`EDIT TEAM — ${key}`;
   document.getElementById('tm2-label').value=t.label;
@@ -1011,7 +1367,6 @@ function openEditTeam(key){
   document.getElementById('tm2-lead').value=t.lead||'';
   document.getElementById('tm2-focus').value=t.focus;
   document.getElementById('tm2-color').value=t.color;
-  // render member checkboxes
   const wrap=document.getElementById('tm2-members');
   wrap.innerHTML=MEMBERS.map(m=>{
     const checked=t.members.includes(m.name);
@@ -1024,130 +1379,26 @@ function openEditTeam(key){
 }
 
 function saveTeam(){
-  if(!editingTeamKey)return;
+  if(!editingTeamKey) return;
   const t=TEAMS[editingTeamKey];
-  const data={
-    key:editingTeamKey,
+  const data={key:editingTeamKey,
     label:document.getElementById('tm2-label').value.trim()||t.label,
     spoc:document.getElementById('tm2-spoc').value.trim(),
     lead:document.getElementById('tm2-lead').value.trim(),
     focus:document.getElementById('tm2-focus').value,
     color:document.getElementById('tm2-color').value,
-    members:[...document.querySelectorAll('#tm2-members input[type=checkbox]:checked')].map(c=>c.value),
-  };
-  apiPut(`/api/teams/${editingTeamKey}`, data)
-    .then(()=>{ toast('Team updated','✎'); closeModal('team-modal'); loadAll(); })
-    .catch(()=>toast('Save failed','⚠'));
+    members:[...document.querySelectorAll('#tm2-members input[type=checkbox]:checked')].map(c=>c.value)};
+  apiPut(`/api/teams/${editingTeamKey}`,data)
+    .then(()=>{toast('Team updated','✎');closeModal('team-modal');loadAll();}).catch(()=>toast('Save failed','⚠'));
 }
 
-function showMemberDetail(id){
-  const m=MEMBERS.find(x=>x.id===id);
-  if(!m)return;
-  const myJobs=jobs.filter(j=>j.person&&j.person.toLowerCase().includes(m.name.split(' ')[0].toLowerCase()));
-  document.getElementById('dm-title').textContent=m.name.toUpperCase();
-  document.getElementById('dm-body').innerHTML=`
-    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">
-      <div class="av av-lg" style="background:${m.color}20;color:${m.color};border:1px solid ${m.color}40">${m.id}</div>
-      <div>
-        <div style="font-size:18px;font-weight:600">${m.name}</div>
-        <div style="color:var(--mist);font-size:12px;font-family:var(--font-mono)">${m.role} · ${m.dept}</div>
-        <div style="margin-top:6px;display:flex;gap:6px">${statusBadge(m.used>m.limit?'DELAYED':m.used===0?'NOT STARTED':'ON TRACK')}</div>
-      </div>
-    </div>
-    <div class="detail-grid">
-      <div class="detail-field"><label>Capacity Used</label><span style="color:${m.used>m.limit?'#e84040':'#2ec27e'}">${m.used} / ${m.limit} tasks</span></div>
-      <div class="detail-field"><label>Availability</label><span>${Math.max(0,Math.round((1-m.used/m.limit)*100))}%</span></div>
-    </div>
-    <div style="font-size:10px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Assigned Jobs</div>
-    ${myJobs.length?myJobs.map(j=>`<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--ink3);border-radius:4px;margin-bottom:4px;font-size:12px">
-      <span>${stageBadge(j.stage)}</span>
-      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${j.name}</span>
-      ${statusBadge(j.status)}
-    </div>`).join(''):'<div style="color:var(--mist);font-size:12px">No jobs assigned.</div>'}`;
-  document.getElementById('dm-delete').style.display='';
-  document.getElementById('dm-delete').onclick=()=>{ closeModal('detail-modal'); deleteMember(id); };
-  document.getElementById('dm-edit').textContent='✎ Edit';
-  document.getElementById('dm-edit').onclick=()=>{ closeModal('detail-modal'); openEditMember(id); };
-  document.getElementById('dm-complete').style.display='none';
-  openModal('detail-modal');
-}
-
-// ─── TIMELINE / SCHEDULE ───
-function renderTimeline(){
-  const weeks=[];
-  const base=new Date('2026-01-01');
-  for(let i=0;i<20;i++){
-    const d=new Date(base);d.setDate(d.getDate()+i*7);
-    weeks.push(`W${i+1} ${d.getMonth()+1}/${d.getDate()}`);
-  }
-  const totalW=weeks.length;
-  const barColors={'N1':'#4aa3f5','N2':'#f0a000','N3':'#a78bfa'};
-
-  const allItems=[
-    ...jobs.filter(j=>j.start).map(j=>({...j,_type:'JOB'})),
-    ...quotes.filter(q=>q.start).map(q=>({...q,_type:'QUOTE'})),
-  ];
-
-  const placed=jobs.slice(0,14).map((j,i)=>({...j,_type:'JOB',_offset:i*5,_width:Math.max(10,15+Math.random()*25)}));
-
-  document.getElementById('main-content').innerHTML=`
-    <div style="margin-bottom:10px;font-size:11px;color:var(--mist);font-family:var(--font-mono)">
-      Showing Jan–May 2026 schedule. Jobs with set dates shown with actual timing; others placed sequentially.
-    </div>
-    <div class="panel tl-wrap">
-      <div class="tl-hd">
-        <div class="tl-name-hd">Project</div>
-        <div style="display:flex;flex:1">
-          ${weeks.slice(0,16).map(w=>`<div class="tl-week-hd">${w}</div>`).join('')}
-        </div>
-      </div>
-      ${placed.map(j=>{
-        const col=barColors[j.team]||'#888';
-        const leftPct=Math.min(j._offset,85);
-        const widPct=Math.max(8,j._width);
-        return `<div class="tl-row" onclick="showJobDetail(${j.id})" style="cursor:pointer">
-          <div class="tl-row-name">
-            ${teamBadge(j.team)}
-            <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">${j.name}</span>
-          </div>
-          <div class="tl-bar-area">
-            <div class="tl-bar" style="left:${leftPct}%;width:${widPct}%;background:${col};color:#0a0c0f" title="${j.name}">
-              ${j.name.length>18?j.name.substring(0,16)+'…':j.name}
-            </div>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>`;
-}
-
-// ─── COMPLETED ───
-function renderCompleted(){
-  document.getElementById('main-content').innerHTML=`
-    <div class="panel">
-      <div class="panel-header"><div class="panel-title">COMPLETED PROJECTS (${completed.length})</div></div>
-      <table class="tbl">
-        <thead><tr><th>Job#</th><th>Project</th><th>Stage</th><th>Team</th><th></th></tr></thead>
-        <tbody>
-          ${completed.map(c=>`<tr>
-            <td style="font-family:var(--font-mono);font-size:10px;color:var(--mist)">${c.id}</td>
-            <td><div class="pn" title="${c.name}">${c.name}</div></td>
-            <td>${stageBadge(c.stage)}</td>
-            <td>${teamBadge(c.team)}</td>
-            <td><span class="badge badge-complete">✓ DONE</span></td>
-          </tr>`).join('')}
-        </tbody>
-      </table>
-    </div>`;
-}
-
-// ═══════════════ MODALS ═══════════════
-function populatePersonSelect(sel,teamKey){
-  const persons=MEMBERS.map(m=>m.name);
-  sel.innerHTML='<option value="">—</option>'+persons.map(p=>`<option>${p}</option>`).join('');
+// ═══════════════ JOB / QUOTE MODALS ═══════════════
+function populatePersonSelect(sel){
+  sel.innerHTML='<option value="">—</option>'+MEMBERS.map(m=>`<option>${m.name}</option>`).join('');
 }
 
 function openJobModal(){
-  editingItem=null; editingType='job';
+  editingItem=null;
   document.getElementById('jm-title').textContent='NEW JOB';
   ['jm-name','jm-num','jm-rev','jm-remarks'].forEach(id=>document.getElementById(id).value='');
   ['jm-framecad','jm-detailer','jm-permit','jm-rfy','jm-gfc','jm-boq'].forEach(id=>document.getElementById(id).value=0);
@@ -1162,8 +1413,8 @@ function openJobModal(){
 }
 
 function openEditJob(id){
-  const j=jobs.find(x=>x.id===id);if(!j)return;
-  editingItem=id; editingType='job';
+  const j=jobs.find(x=>x.id===id); if(!j) return;
+  editingItem=id;
   document.getElementById('jm-title').textContent='EDIT JOB';
   document.getElementById('jm-name').value=j.name;
   document.getElementById('jm-num').value=j.num||'';
@@ -1189,33 +1440,27 @@ function openEditJob(id){
 function saveJob(){
   const name=document.getElementById('jm-name').value.trim();
   if(!name){toast('Project name required','⚠');return;}
-  const data={
-    name,num:document.getElementById('jm-num').value,
-    stage:document.getElementById('jm-stage').value,
-    team:document.getElementById('jm-team').value,
-    person:document.getElementById('jm-person').value,
-    priority:document.getElementById('jm-priority').value,
-    start:document.getElementById('jm-start').value,
-    end:document.getElementById('jm-end').value,
-    rev:document.getElementById('jm-rev').value,
-    remarks:document.getElementById('jm-remarks').value,
+  const data={name,num:document.getElementById('jm-num').value,
+    stage:document.getElementById('jm-stage').value,team:document.getElementById('jm-team').value,
+    person:document.getElementById('jm-person').value,priority:document.getElementById('jm-priority').value,
+    start:document.getElementById('jm-start').value,end:document.getElementById('jm-end').value,
+    rev:document.getElementById('jm-rev').value,remarks:document.getElementById('jm-remarks').value,
     status:document.getElementById('jm-status').value,
     framecad:+document.getElementById('jm-framecad').value||0,
     detailer:+document.getElementById('jm-detailer').value||0,
     permit:+document.getElementById('jm-permit').value||0,
     rfy:+document.getElementById('jm-rfy').value||0,
     gfc:+document.getElementById('jm-gfc').value||0,
-    boq:+document.getElementById('jm-boq').value||0,
-  };
+    boq:+document.getElementById('jm-boq').value||0};
   closeModal('job-modal');
-  const req = editingItem
-    ? apiPut(`/api/jobs/${editingItem}`, data).then(()=>{ toast('Job updated','✎'); })
-    : apiPost('/api/jobs', data).then(r=>{ toast('Job added','◈'); });
-  req.then(()=>loadAll()).catch(e=>toast('Save failed','⚠'));
+  const req=editingItem
+    ?apiPut(`/api/jobs/${editingItem}`,data).then(()=>toast('Job updated','✎'))
+    :apiPost('/api/jobs',data).then(()=>toast('Job added','◈'));
+  req.then(()=>loadAll()).catch(()=>toast('Save failed','⚠'));
 }
 
 function openQuoteModal(){
-  editingItem=null; editingType='quote';
+  editingItem=null;
   document.getElementById('qm-title').textContent='NEW QUOTE';
   ['qm-name','qm-rfq','qm-remarks'].forEach(id=>document.getElementById(id).value='');
   ['qm-ppt','qm-fc','qm-est'].forEach(id=>document.getElementById(id).value=0);
@@ -1229,8 +1474,8 @@ function openQuoteModal(){
 }
 
 function openEditQuote(id){
-  const q=quotes.find(x=>x.id===id);if(!q)return;
-  editingItem=id; editingType='quote';
+  const q=quotes.find(x=>x.id===id); if(!q) return;
+  editingItem=id;
   document.getElementById('qm-title').textContent='EDIT QUOTE';
   document.getElementById('qm-name').value=q.name;
   document.getElementById('qm-rfq').value=q.rfq||'';
@@ -1251,23 +1496,18 @@ function openEditQuote(id){
 function saveQuote(){
   const name=document.getElementById('qm-name').value.trim();
   if(!name){toast('Project name required','⚠');return;}
-  const data={
-    name,rfq:document.getElementById('qm-rfq').value,
-    team:document.getElementById('qm-team').value,
-    person:document.getElementById('qm-person').value,
-    priority:document.getElementById('qm-priority').value,
-    status:document.getElementById('qm-status').value,
-    start:document.getElementById('qm-start').value,
-    end:document.getElementById('qm-end').value,
+  const data={name,rfq:document.getElementById('qm-rfq').value,
+    team:document.getElementById('qm-team').value,person:document.getElementById('qm-person').value,
+    priority:document.getElementById('qm-priority').value,status:document.getElementById('qm-status').value,
+    start:document.getElementById('qm-start').value,end:document.getElementById('qm-end').value,
     remarks:document.getElementById('qm-remarks').value,
     ppt:+document.getElementById('qm-ppt').value||0,
     fc:+document.getElementById('qm-fc').value||0,
-    est:+document.getElementById('qm-est').value||0,
-  };
+    est:+document.getElementById('qm-est').value||0};
   closeModal('quote-modal');
-  const req = editingItem
-    ? apiPut(`/api/quotes/${editingItem}`, data).then(()=>toast('Quote updated','✎'))
-    : apiPost('/api/quotes', data).then(()=>toast('Quote added','◎'));
+  const req=editingItem
+    ?apiPut(`/api/quotes/${editingItem}`,data).then(()=>toast('Quote updated','✎'))
+    :apiPost('/api/quotes',data).then(()=>toast('Quote added','◎'));
   req.then(()=>loadAll()).catch(()=>toast('Save failed','⚠'));
 }
 
@@ -1282,110 +1522,16 @@ function openMailTaskModal(){
 function saveMailTask(){
   const name=document.getElementById('mm-name').value.trim();
   if(!name){toast('Name required','⚠');return;}
-  const data={
-    name,
-    stage:document.getElementById('mm-stage').value,
+  const data={name,stage:document.getElementById('mm-stage').value,
     permit:+document.getElementById('mm-permit').value||0,
     remarks:document.getElementById('mm-remarks').value,
     struct:document.getElementById('mm-struct').value,
-    assigned:document.getElementById('mm-assigned').value.split(',').map(s=>s.trim()).filter(Boolean),
-  };
+    assigned:document.getElementById('mm-assigned').value.split(',').map(s=>s.trim()).filter(Boolean)};
   closeModal('mailtask-modal');
-  apiPost('/api/mail_tasks', data)
-    .then(()=>{ toast('Mail task added','✉'); loadAll(); })
-    .catch(()=>toast('Save failed','⚠'));
+  apiPost('/api/mail_tasks',data).then(()=>{toast('Mail task added','✉');loadAll();}).catch(()=>toast('Save failed','⚠'));
 }
 
-// ─── DETAIL MODALS ───
-function showJobDetail(id){
-  const j=jobs.find(x=>x.id===id);if(!j)return;
-  document.getElementById('dm-title').textContent=j.num?`${j.num} — JOB`:'JOB DETAIL';
-  document.getElementById('dm-body').innerHTML=`
-    <div style="margin-bottom:12px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">${j.name}</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">${stageBadge(j.stage)}${teamBadge(j.team)}${priorityBadge(j.priority)}${statusBadge(j.status)}</div></div>
-    <div class="detail-grid">
-      <div class="detail-field"><label>Assigned Person</label><span>${j.person||'—'}</span></div>
-      <div class="detail-field"><label>Revision</label><span style="font-family:var(--font-mono)">${j.rev||'—'}</span></div>
-      <div class="detail-field"><label>Start Date</label><span>${formatDate(j.start)}</span></div>
-      <div class="detail-field"><label>End Date</label><span>${formatDate(j.end)}</span></div>
-    </div>
-    <div style="font-size:10px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Checklist Progress</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
-      ${[['FrameCAD',j.framecad],['Detailer',j.detailer],['City Permit',j.permit],['RFY',j.rfy],['GFC',j.gfc],['BOQ',j.boq]].map(([lbl,val])=>{
-        const col=val>=100?'#2ec27e':val>0?'#f0a000':'var(--steel)';
-        return `<div style="background:var(--ink3);border-radius:4px;padding:8px 10px">
-          <div style="font-size:9px;color:var(--mist);font-family:var(--font-mono);margin-bottom:4px">${lbl}</div>
-          <div style="font-family:var(--font-display);font-size:22px;color:${col}">${val||0}%</div>
-          <div class="prog-wrap" style="margin-top:4px"><div class="prog-fill" style="width:${val||0}%;background:${col}"></div></div>
-        </div>`;
-      }).join('')}
-    </div>
-    ${j.remarks?`<div style="font-size:10px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">Remarks</div><div style="font-size:12px;color:var(--fog);background:var(--ink3);padding:10px;border-radius:4px;line-height:1.6">${j.remarks}</div>`:''}`;
-  document.getElementById('dm-delete').style.display='';
-  document.getElementById('dm-delete').onclick=()=>{
-    apiDel(`/api/jobs/${id}`).then(()=>{ closeModal('detail-modal'); toast('Job deleted','✕'); loadAll(); });
-  };
-  document.getElementById('dm-edit').textContent='✎ Edit';
-  document.getElementById('dm-edit').onclick=()=>{closeModal('detail-modal');openEditJob(id);};
-  document.getElementById('dm-complete').style.display='';
-  document.getElementById('dm-complete').onclick=()=>{
-    const job=jobs.find(x=>x.id===id);
-    if(job){
-      const cid='PN-26-'+(completed.length+10).toString().padStart(3,'0');
-      apiPost('/api/completed',{id:cid,name:job.name,stage:job.stage,team:job.team})
-        .then(()=>apiDel(`/api/jobs/${id}`))
-        .then(()=>{ closeModal('detail-modal'); toast('Marked Complete ✓','✓'); loadAll(); });
-    }
-  };
-  openModal('detail-modal');
-}
-
-function showQuoteDetail(id){
-  const q=quotes.find(x=>x.id===id);if(!q)return;
-  document.getElementById('dm-title').textContent='QUOTE DETAIL';
-  document.getElementById('dm-body').innerHTML=`
-    <div style="margin-bottom:12px"><div style="font-size:14px;font-weight:600;margin-bottom:6px">${q.name}</div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">${teamBadge(q.team)}${priorityBadge(q.priority)}${statusBadge(q.status)}</div></div>
-    <div class="detail-grid">
-      <div class="detail-field"><label>Assigned Person</label><span>${q.person||'—'}</span></div>
-      <div class="detail-field"><label>RFQ #</label><span style="font-family:var(--font-mono)">${q.rfq||'—'}</span></div>
-      <div class="detail-field"><label>Start</label><span>${formatDate(q.start)}</span></div>
-      <div class="detail-field"><label>End</label><span>${formatDate(q.end)}</span></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px">
-      ${[['PPT',q.ppt],['FrameCAD',q.fc],['Estimation',q.est]].map(([lbl,val])=>{
-        const col=val>=100?'#2ec27e':val>0?'#4aa3f5':'var(--steel)';
-        return `<div style="background:var(--ink3);border-radius:4px;padding:8px 10px">
-          <div style="font-size:9px;color:var(--mist);font-family:var(--font-mono);margin-bottom:4px">${lbl}</div>
-          <div style="font-family:var(--font-display);font-size:22px;color:${col}">${val||0}%</div>
-          <div class="prog-wrap" style="margin-top:4px"><div class="prog-fill" style="width:${val||0}%;background:${col}"></div></div>
-        </div>`;
-      }).join('')}
-    </div>
-    ${q.remarks?`<div style="font-size:10px;color:var(--mist);font-family:var(--font-mono);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">Remarks</div><div style="font-size:12px;color:var(--fog);background:var(--ink3);padding:10px;border-radius:4px;line-height:1.6">${q.remarks}</div>`:''}`;
-  document.getElementById('dm-delete').style.display='';
-  document.getElementById('dm-delete').onclick=()=>{
-    apiDel(`/api/quotes/${id}`).then(()=>{ closeModal('detail-modal'); toast('Quote deleted','✕'); loadAll(); });
-  };
-  document.getElementById('dm-edit').textContent='✎ Edit';
-  document.getElementById('dm-edit').onclick=()=>{closeModal('detail-modal');openEditQuote(id);};
-  document.getElementById('dm-complete').textContent='→ Promote to Job';
-  document.getElementById('dm-complete').style.display='';
-  document.getElementById('dm-complete').onclick=()=>{
-    const qt=quotes.find(x=>x.id===id);
-    if(!qt) return;
-    const jobData={num:'',name:qt.name,stage:'JOB',team:qt.team,person:qt.person,
-      priority:qt.priority,start:qt.start,end:qt.end,rev:'',
-      framecad:0,detailer:0,permit:0,rfy:0,gfc:0,boq:0,
-      status:'NOT STARTED',remarks:'Promoted from Quote'};
-    apiPost('/api/jobs', jobData)
-      .then(()=>apiDel(`/api/quotes/${id}`))
-      .then(()=>{ closeModal('detail-modal'); toast('Promoted to Job','◈'); loadAll(); });
-  };
-  openModal('detail-modal');
-}
-
-// ─── SEARCH ───
+// ═══════════════ SEARCH ═══════════════
 function globalSearch(q){
   if(!q){render();return;}
   q=q.toLowerCase();
@@ -1395,31 +1541,33 @@ function globalSearch(q){
   document.getElementById('main-content').innerHTML=`
     <div style="margin-bottom:16px">
       <div class="section-row"><div class="section-head">JOBS (${jl.length})</div></div>
-      ${jl.length?`<div class="panel"><table class="tbl"><thead><tr><th>Project</th><th>Stage</th><th>Team</th><th>Status</th></tr></thead><tbody>${jl.map(j=>`<tr class="clickable" onclick="showJobDetail(${j.id})"><td class="pn">${j.name}</td><td>${stageBadge(j.stage)}</td><td>${teamBadge(j.team)}</td><td>${statusBadge(j.status)}</td></tr>`).join('')}</tbody></table></div>`:'<div style="color:var(--mist);font-size:12px;padding:10px">None found.</div>'}
+      ${jl.length?`<div class="panel"><table class="tbl"><thead><tr><th>Project</th><th>Stage</th><th>Team</th><th>Status</th></tr></thead>
+      <tbody>${jl.map(j=>`<tr class="clickable" onclick="openJobPanel(${j.id})"><td class="pn">${j.name}</td><td>${stageBadge(j.stage)}</td><td>${teamBadge(j.team)}</td><td>${statusBadge(j.status)}</td></tr>`).join('')}</tbody></table></div>`:
+      '<div style="color:var(--mist);font-size:12px;padding:10px">None found.</div>'}
     </div>
     <div>
       <div class="section-row"><div class="section-head">QUOTES (${ql.length})</div></div>
-      ${ql.length?`<div class="panel"><table class="tbl"><thead><tr><th>Project</th><th>Team</th><th>Status</th></tr></thead><tbody>${ql.map(q=>`<tr class="clickable" onclick="showQuoteDetail(${q.id})"><td class="pn">${q.name}</td><td>${teamBadge(q.team)}</td><td>${statusBadge(q.status)}</td></tr>`).join('')}</tbody></table></div>`:'<div style="color:var(--mist);font-size:12px;padding:10px">None found.</div>'}
+      ${ql.length?`<div class="panel"><table class="tbl"><thead><tr><th>Project</th><th>Team</th><th>Status</th></tr></thead>
+      <tbody>${ql.map(q=>`<tr class="clickable" onclick="openQuotePanel(${q.id})"><td class="pn">${q.name}</td><td>${teamBadge(q.team)}</td><td>${statusBadge(q.status)}</td></tr>`).join('')}</tbody></table></div>`:
+      '<div style="color:var(--mist);font-size:12px;padding:10px">None found.</div>'}
     </div>`;
 }
 
-// ═══════════════ INIT — Load from API ═══════════════
+// ═══════════════ INIT ═══════════════
 async function loadAll(){
-  try {
-    const data = await apiGet('/api/all');
-    // Teams: array → object keyed by key
-    TEAMS = {};
-    (data.teams||[]).forEach(t => { TEAMS[t.key] = t; });
-    // Members: map DB column 'lim' → 'limit'
-    MEMBERS = (data.members||[]).map(m => ({...m, limit: m.lim ?? m.limit ?? 5}));
-    jobs      = data.jobs      || [];
-    quotes    = data.quotes    || [];
-    cos       = data.change_orders || [];
-    mailTasks = data.mail_tasks|| [];
-    completed = data.completed || [];
+  try{
+    const data=await apiGet('/api/all');
+    TEAMS={};
+    (data.teams||[]).forEach(t=>{TEAMS[t.key]=t;});
+    MEMBERS=(data.members||[]).map(m=>({...m,limit:m.lim??m.limit??5}));
+    jobs=data.jobs||[];
+    quotes=data.quotes||[];
+    cos=data.change_orders||[];
+    mailTasks=data.mail_tasks||[];
+    completed=data.completed||[];
     updateBadges();
     render();
-  } catch(e) {
+  }catch(e){
     document.getElementById('main-content').innerHTML=`
       <div style="padding:40px;text-align:center;color:var(--red);font-family:var(--font-mono)">
         <div style="font-size:18px;margin-bottom:10px">⚠ Cannot connect to backend</div>
